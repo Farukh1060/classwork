@@ -1,0 +1,32 @@
+.form_container{
+    width: 350px;
+    padding: 25px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow:  3px 3px 5px #ccc;
+}
+.input_field{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+input{
+    /* width: 100%; */
+
+    padding: 10px ;
+}
+input::placeholder{
+    font-size: 18px;
+}
+button{
+    font-size: 18px;
+    width: 100%;
+    padding: 12px;
+}
+.text{
+    text-transform: capitalize;
+    font-size: larger;
+    margin: 15px;
+    color: #928c8c;
+}

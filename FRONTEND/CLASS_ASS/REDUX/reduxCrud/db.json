@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "c404",
+      "name": "shaikh",
+      "email": "shaikh@gmail.com",
+      "number": "133566"
+    },
+    {
+      "id": "046d",
+      "name": "farukh",
+      "email": "aa@gmail.com",
+      "number": "133566"
+    },
+    {
+      "id": "6705",
+      "name": "farukh",
+      "email": "aa@gmail.com",
+      "number": "133566"
+    }
+  ]
+}

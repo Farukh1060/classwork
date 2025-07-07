@@ -1,0 +1,66 @@
+.container {
+  width: 650px;
+  margin-inline: auto;
+  border: 1px solid gray;
+  padding: 20px;
+  font-size: 20px;
+  text-transform: capitalize;
+  color: gray;
+  background-color: aqua;
+}
+.container .marks_sheet .sub {
+  width: max-content;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.container .marks_sheet .sub label {
+  width: 200px;
+}
+.container .marks_sheet .sub input {
+  flex-grow: 1;
+  font-size: 16px;
+  padding: 5px;
+  margin-inline: 30px;
+}
+.container .marks_sheet .sub input::-webkit-inner-spin-button {
+  appearance: none;
+}
+.container .marks_sheet .sub input:focus {
+  outline: none;
+  border: 2px solid rgb(122, 122, 139);
+  box-shadow: 2px 2px 5px rgb(138, 138, 156);
+}
+.container .marks_sheet .sub .err_rem {
+  display: none;
+}
+.container .marks_sheet .sub .err_add {
+  text-transform: capitalize;
+  display: block;
+  color: red;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+.container .res_btn {
+  display: flex;
+}
+.container .res_btn button {
+  padding: 5px 30px;
+  font-size: 18px;
+  margin-inline: auto;
+  margin-block: 20px;
+}
+.container .res_value {
+  display: flex;
+  justify-content: space-around;
+}
+.container .pdf {
+  text-align: center;
+}
+.container .pdf button {
+  padding: 5px 30px;
+  font-size: 18px;
+  margin-inline: auto;
+  margin-block: 20px;
+}

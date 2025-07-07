@@ -1,0 +1,23 @@
+.expences_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding-left: 10px;
+    color: white;
+    
+}
+.expences{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(168, 168, 223);
+    padding: 0px 10px;
+    border-radius: 8px;
+    margin-block: 10px;
+}
+.amount{
+    background-color: rgb(126, 126, 241);
+    padding: 8px 15px;
+    border-radius: 8px;
+}

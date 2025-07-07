@@ -1,0 +1,159 @@
+<<<<<<< HEAD
+.container{
+    width: 650px;
+    margin-inline: auto;
+    border: 1px solid gray;
+    padding: 20px;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: gray;
+    background-color: aqua;
+    .marks_sheet{
+
+        .sub{
+            // border: 1px solid red;
+            width: max-content;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+
+            label{
+              width: 200px;
+            }
+            
+            input {
+                flex-grow: 1;
+                font-size: 16px;
+                padding: 5px;
+                margin-inline: 30px;
+                &::-webkit-inner-spin-button {
+                    appearance: none;
+                }
+                &:focus{
+                    outline: none;
+                    border: 2px solid rgb(122, 122, 139);
+                    box-shadow: 2px 2px 5px rgb(138, 138, 156);
+                }
+            }
+            .err_rem{
+                display: none;
+            }
+            .err_add{
+                text-transform: capitalize;
+                display: block;
+                color: red;
+               font-weight: 700;
+               letter-spacing: 2px;
+               font-size: 20px;
+            }
+        }
+
+
+    }
+    
+    .res_btn{
+        display: flex;
+      
+        // border: 1px solid red;
+        button{
+            padding: 5px 30px;
+            font-size: 18px;
+            margin-inline: auto;
+            margin-block: 20px;
+        }
+    }
+    .res_value{
+        display: flex;
+        justify-content: space-around;
+    }
+    .pdf{
+        text-align: center;
+        button{
+            padding: 5px 30px;
+            font-size: 18px;
+            margin-inline: auto;
+            margin-block: 20px;
+        }
+    }
+    
+}
+=======
+.container{
+    width: 650px;
+    margin-inline: auto;
+    border: 1px solid gray;
+    padding: 20px;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: gray;
+    background-color: aqua;
+    .marks_sheet{
+
+        .sub{
+            // border: 1px solid red;
+            width: max-content;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+
+            label{
+              width: 200px;
+            }
+            
+            input {
+                flex-grow: 1;
+                font-size: 16px;
+                padding: 5px;
+                margin-inline: 30px;
+                &::-webkit-inner-spin-button {
+                    appearance: none;
+                }
+                &:focus{
+                    outline: none;
+                    border: 2px solid rgb(122, 122, 139);
+                    box-shadow: 2px 2px 5px rgb(138, 138, 156);
+                }
+            }
+            .err_rem{
+                display: none;
+            }
+            .err_add{
+                text-transform: capitalize;
+                display: block;
+                color: red;
+               font-weight: 700;
+               letter-spacing: 2px;
+               font-size: 20px;
+            }
+        }
+
+
+    }
+    
+    .res_btn{
+        display: flex;
+      
+        // border: 1px solid red;
+        button{
+            padding: 5px 30px;
+            font-size: 18px;
+            margin-inline: auto;
+            margin-block: 20px;
+        }
+    }
+    .res_value{
+        display: flex;
+        justify-content: space-around;
+    }
+    .pdf{
+        text-align: center;
+        button{
+            padding: 5px 30px;
+            font-size: 18px;
+            margin-inline: auto;
+            margin-block: 20px;
+        }
+    }
+    
+}
+>>>>>>> origin/main

@@ -1,0 +1,46 @@
+<<<<<<< HEAD
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+
+    padding: 50px;
+    border: 2px solid rgb(243, 94, 94);
+    max-height: 500px;
+
+    
+}
+#parent{
+    height: 100px;
+    background-color: beige;
+    border: 2px solid black;
+}
+#btn{
+    margin: 30px;
+
+=======
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+
+    padding: 50px;
+    border: 2px solid rgb(243, 94, 94);
+    max-height: 500px;
+
+    
+}
+#parent{
+    height: 100px;
+    background-color: beige;
+    border: 2px solid black;
+}
+#btn{
+    margin: 30px;
+
+>>>>>>> origin/main
+}

@@ -1,0 +1,35 @@
+input{
+    padding: 8px 10px;
+    font-size: large;
+    border: 2px solid hsl(0, 0%, 50%);
+    border-radius: 5px;
+    /* margin-inline: auto; */
+}
+input::placeholder{
+    text-transform: capitalize;
+    font-size: large;
+    text-align: center;
+}
+input:focus{
+    outline: none;
+}
+
+.inp{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+
+
+button{
+
+    min-width: 100px;
+    font-size: medium;
+    background-color: cadetblue;
+    color: wheat;
+    border: none;
+    border-radius: 8px;
+}
+button:hover{
+    color: white;
+}

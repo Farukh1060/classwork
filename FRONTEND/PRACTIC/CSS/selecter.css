@@ -1,0 +1,53 @@
+li{ 
+    /* element selecter */
+    color: red;
+}
+#list2{
+    /* id selecter */
+    color: green;
+}
+.list5{
+    /* class selector */
+    color: cadetblue;
+}
+a:hover{
+    /* psedoclass selecter */
+    color:black;
+}
+p::first-line{
+    /* psedoelement selector */
+    color: burlywood;
+}
+a[ href="./media.html"]{
+    /* artibute selector */
+    font-size: 20px;
+    background-color: cadetblue;
+}
+
+/* *{
+    universal selecter
+} */
+/* div a{
+    select all child inside div
+    color: rgb(248s, 42, 189);
+} */
+/* div > a{
+    select direct child
+    text-transform: capitalize;
+    text-decoration: line-through;
+} */
+/* div ~ a{
+    select all sibline
+    text-transform: capitalize;
+    text-decoration: line-through;
+} */
+div + a{
+    /* select direct sibline */
+    text-transform: capitalize;
+    text-decoration: line-through;
+}
+
+/* h1,p{
+    
+    text-decoration: underline;
+} */

@@ -1,0 +1,41 @@
+.silder_container{
+    position: relative;
+}
+.slider{
+    width: 100%;
+    height: 600px;
+    position: absolute;
+    border: 1px solid gray;
+    /* display: none; */
+}
+.slide1{
+   background-color: beige; 
+}
+.slide2{
+    background-color: burlywood;
+}
+.slide3{
+    
+    background-color: aliceblue;
+}
+.slide4{
+    background-color: cornsilk;
+}
+.btn {
+    display: flex;
+    position: relative;
+    margin: 20px;
+    top: 300px;
+    /* border: 1px solid red; */
+    z-index: 99;
+}
+.btn .right{
+    position: absolute;
+    right: 0;
+
+}
+.btn .left{
+    position: absolute;
+    left: 0;
+    
+}

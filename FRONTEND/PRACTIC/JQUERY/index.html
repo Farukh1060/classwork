@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selecter</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
+</head>
+<body>
+    <p id="para">p1</p>
+    <p class="black">p2</p>
+    <p class="black">p3</p>
+    <a href="#" class="black">links</a>
+    <div id="div1" style="height: 150px; width: 150px ;background-color: aqua;">mouse enter and leave</div>
+    <br><br>
+    <div id="div2" style="height: 150px; width: 150px ;background-color: rgb(0, 151, 93);">hover</div>
+    <br><br>
+    <div id="div3" style="height: 150px; width: 150px ;background-color: rgb(9, 229, 145);">on</div>
+
+    <!-- 1.select html elemnt -->
+    <!-- 2. perform action or jquery function on selected element -->
+    <!-- $(selecter).action();  jquery synatx -->
+<br><br>
+    <button id="btn">hide p</button>
+    <button id="btn2">show p</button>
+    <button id="btn3">dbl click show p</button>
+
+
+    <script>
+        $(document).ready(function(){
+
+            // selecter
+            // $("p").hide();         //tag selecter
+            // $("#para").hide();     // id
+            // $(".black").hide();    //class
+            // $("p.black").hide();      // like css
+            // $("*").hide();         // universal
+            // $(this).hide()            // select current 
+
+            $("#btn").click(function(){
+            $("p").hide()
+            // $("p").show()
+         })
+
+
+         $("#btn2").click(function(){
+            // $("p").hide()
+            $("p").show()
+         })
+
+            // $("#btn3").dblclick(function(){
+            //     $("p.black").show()
+            // })
+
+            $("#div1").mouseenter(function(){
+            $("p.black").show()
+            console.log("pk")
+            })
+
+            $("#div1").mouseleave(function(){
+            $("p.black").hide()
+            console.log("pk")
+         })
+
+         $("#div2").hover(function(){  
+            $("p.black").show()
+            
+         },function(){
+            $("p.black").hide()
+         })
+
+        //  for multple event on same elem
+         $("#div3").on({
+            click:function(){
+                $("p.black").css("background-color","red")
+            },
+            mouseenter:function(){
+                $("p.black").show()
+            }
+         })
+
+         //efect
+
+         
+
+
+
+
+
+        })
+        
+    </script>
+    <!-- <script src="JQ_selecter.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,42 @@
+:root{
+    --primar-color:rgb(173, 216, 32);
+    --btn-color: hsl(271, 76%, 53%);;
+   --text-color:rgb(14, 177, 236);
+   --link-color:rgb(55, 219, 19);
+}
+table{
+    border: 1px solid red;
+    empty-cells: hide;
+    /* border-collapse: collapse; */
+    border-spacing: 10px;
+}
+caption{
+    border: 1px solid red;
+}
+th, td{
+    color: var(--text-color);
+    border: 1px solid red;
+    height: 50px;
+    padding: 15px;
+    text-align: right;
+    vertical-align:  bottom;
+    /* table-layout: fixed; */
+    /* width: 100%; */
+
+}
+.cal{
+    height: 200px;
+    background-color: var(--primar-color);
+    width: calc(100% - 200px);
+
+
+}
+a{
+    text-decoration: none;
+    color: var(--link-color);
+    padding: 8px;
+    font-size: 25px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    background-color:var(--btn-color);
+}

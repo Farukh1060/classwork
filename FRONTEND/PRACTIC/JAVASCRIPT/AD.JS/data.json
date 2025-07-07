@@ -1,0 +1,13 @@
+{
+    "name":"farukh",
+    "age":25,
+    "is_student":true,
+    "passport_no":null,
+    "lang":["c","c++","java"],
+    "address":{
+        "city":"surat",
+        "state":"guj",
+        "pincode":"394201"
+    }
+}
+

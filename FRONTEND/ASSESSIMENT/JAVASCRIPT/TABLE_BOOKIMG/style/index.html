@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>restaurants</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="fontawesome-free-6.5.2-web/css/all.min.css"> -->
+</head>
+<body>
+    <section class="hero">
+        <div class="hero_text_container">
+            <div class="hero_text">
+                <h2>welcome to </h2>
+                <h1>Black Pearl restaurant</h1>
+                <button>LOOK MENU</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="welcome">
+        <div class="welcome_container">
+            <div class="welcome_text">
+                <h3>Indian restaurant</h3>
+                <h4>WELCOME</h4>
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt repudiandae quam culpa odit, ipsa similique aliquam blanditiis facilis mollitia error doloremque nostrum qui iure vel excepturi, consequuntur placeat voluptatem. Natus quasi libero quia similique praesentium?</P>
+            </div>
+
+            <div class="welcome_img">
+                <img src="style/photo/food1.jpg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="discover">
+        <div class="discover_text">
+            <h4>Discover</h4>
+            <p>Our Famous Place</p>
+        </div>
+    </section>
+
+    <section class="grid_container" >
+        <div class="discover_text">
+            <h4>Discover</h4>
+            <p>Our Menu</p>
+        </div>
+        <div class="grid_item_container">
+            
+            <div class="grid_img">
+                <div class="grid_item grid-1"><img src="style/photo/our-menu-01.jpg" alt=""></div>
+                <div class="grid_item grid-2"><img src="style/photo/our-menu-05.jpg" alt=""></div>
+                <div class="grid_item grid-3"><img src="style/photo/our-menu-08.jpg" alt=""></div>
+                <div class="grid_item grid-4"><img src="style/photo/our-menu-10.jpg" alt=""></div>
+                <div class="grid_item grid-5"><img src="style/photo/our-menu-13.jpg" alt=""></div>
+                <div class="grid_item grid-6"><img src="style/photo/our-menu-16.jpg" alt=""></div>
+            </div>
+            
+        </div>
+    </section>  
+
+
+
+    <section class="img_container">
+        <!-- <img src="style/photo/hotal3.jpg" alt=""> -->
+        <div><img src="style/photo/images.jpeg" alt=""></div>
+        <section class="form_container">
+            <div class="discover_text">
+                <h4>Reservation</h4>
+                <p>Book Table</p>
+            </div>
+            <form action="" id="restaurants" class="restaurants_food">
+                <div class="user_name_container grid">
+                    <label for="user_name">user name : </label>
+                    <input type="text" id="user_name">
+                </div>
+    
+                <div class="mobile_no_container grid">
+                    <label for="number">mobile number : </label>
+                    <input type="number" id="number">
+                </div>
+    
+                <div class="email_container grid">
+                    <label for="email">email : </label>
+                    <input type="email" id="email"> 
+                </div>
+
+                
+
+                <div class="person_container grid">
+                    <label for="person">no of person : </label>
+                    <input type="number" id="person"> 
+                </div>
+
+                <div class="booking_container grid">
+
+                    <label for="booking"> booking choice : </label>
+
+                    <div class="icon">
+                        <input type="text" id="option_value" class="get_option" readonly placeholder="select">
+                        <i class="fa-solid fa-chevron-down" id="arrow"></i>
+                    </div>
+
+                    <div class="booking_option" id="option_container">
+                        <div>
+                            <option value="full" role="button">full day booking</option>
+                            
+                        </div>
+                        <div>
+                            <option value="half">half day booking</option>
+                           
+                        </div>
+                        <div>
+                            <option value="hourly">hourly booking</option>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <button id="sub">submit</button>
+    
+            </form>
+    
+        </section>
+    </section>
+    
+   
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

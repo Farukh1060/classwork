@@ -1,0 +1,17 @@
+{
+    "sutdent":[
+        {
+            "name":"farukh",
+            "age":25
+        },
+        {
+            "name":"faru",
+            "age":27
+        },
+        {
+            "name":"far",
+            "age":29
+        }
+    ]
+
+}

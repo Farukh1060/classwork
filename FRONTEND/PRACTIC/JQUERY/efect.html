@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container" style="display: flex;gap: 10px;">
+
+        <div id="div1" style="height: 150px; width: 150px ;background-color: aqua;">fadein</div>
+        <div id="div2" style="height: 150px; width: 150px ;background-color: rgb(0, 151, 93);">fadout</div>
+        <div id="div3" style="height: 150px; width: 150px ;background-color: rgb(9, 229, 145);">fadetogal</div>
+        <div id="div4" style="height: 150px; width: 150px ;background-color: rgb(9, 229, 145);">fadeto</div>
+    </div>
+    
+    
+
+    <!-- 1.select html elemnt -->
+    <!-- 2. perform action or jquery function on selected element -->
+    <!-- $(selecter).action();  jquery synatx -->
+<br><br>
+    <button id="btn">fateout</button>
+    <button id="btn2">fadein</button>
+    <button id="btn3">fadetogal</button>
+    <button id="btn4">fadeto</button>
+<br><br>
+    <button id="btn5">slide up</button>
+    <button id="btn6">slide down</button>
+    <button id="btn7">slidetogal</button>
+</body>
+
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            $("#div1").fadeOut(2000,);
+        })
+        $("#btn2").click(function(){
+            $("#div1").fadeIn();
+        })
+        $("#btn3").click(function(){
+            $("#div1").fadeToggle();
+        })
+        $("#btn4").click(function(){
+            $("#div1").fadeTo(2000,0.3);
+        })
+
+        // slide
+        $("#btn5").click(function(){
+            $("#div2").slideUp(2000);
+        })
+        $("#btn6").click(function(){
+            $("#div2").slideDown(2000);
+        })
+        $("#btn7").click(function(){
+            $("#div2").slideToggle(2000);
+        })
+
+    })
+</script>
+</html>

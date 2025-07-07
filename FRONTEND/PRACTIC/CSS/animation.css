@@ -1,0 +1,55 @@
+@keyframes animations{
+    /* from{background-color: burlywood;border: 2px solid rgb(236, 127, 31);
+    }
+    to{background-color: aquamarine;border: 12px solid rgb(236, 127, 31);
+    } */
+    0%{height: 150px;
+        width: 150px;
+        background-color: #deb887;
+        border-radius: 25%;
+    }
+    25%{height: 250px;
+        width: 250px;
+        background-color: rgb(178, 210, 63);
+        margin: 50px;
+        border-radius: 50%;
+    } 
+    75%{height: 350px;
+        width: 350px;
+        background-color: rgb(46, 49, 223);
+        margin: 100px;
+        border-radius: 75%;
+
+    }   
+    100%{height: 150px;
+            width: 150px;
+            border-radius:100%;
+            background-color: rgb(213, 65, 31);}
+}
+.base{
+    /* border: 2px solid rgb(236, 127, 31); */
+    height: 150px;
+    width: 150px;
+}
+.box{
+    height: 150px;
+    width: 150px;
+    background-color: burlywood;
+    border-radius: 15%;
+    animation-name: animations;
+    animation-duration: 2s;
+    /* animation-timing-function: ease-in-out; */
+    animation-iteration-count: infinite;
+    /* animation-direction: reverse; */
+}
+.box2{
+    height: 150px;
+    width: 150px;
+    background-color: burlywood;
+    border-radius: 15%;
+    animation-name: animations;
+    animation-duration: 2s;
+    /* animation-timing-function: ease-in-out; */
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}

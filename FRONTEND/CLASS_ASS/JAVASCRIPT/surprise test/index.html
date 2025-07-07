@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="container">
+        <div class="name_container utility m_b">
+            <label for="cust_name">enter name :</label>
+            <input type="text" id="cust_name">
+        </div>
+
+
+        <div class="fee_container m_b">
+            <div class="fees utility">
+                <label for="cust_name">total fees :</label>
+                <input type="number" id="cust_fees" value="50000">
+            </div>
+
+            <div class="pay_method m_b">
+                <p>pay fees</p>
+                <div class="lab">
+                  <div>
+
+                    <label for="cheque"> cheque:</label>
+                    <input type="radio" name="pay" id="cheque">
+                 </div>
+                 <div>
+
+                    <label for="online"> online:</label>            
+                    <input type="radio" name="pay" id="online">
+                  </div>
+                     <div>
+                         <label for="cash"> cash:</label>         
+                        <input type="radio" name="pay" id="cash">
+                     </div>
+
+                 </div>
+           
+            </div>
+
+
+          <div class="result" style="display: none;" id="show_chq">
+            <div class="pay_by_cheque comman">
+                <div>
+                    <label for="by_cheque">cheque no :</label>
+                    <input type="number" id="by_cheque">
+                </div>
+                <div>
+                    <label for="amount1">amount :</label>
+                    <input type="number" id="amount1">
+                </div>
+            </div>
+          </div>
+
+          <div class="result" style="display: none;" id="show_upi">
+            <div class="pay_by_upi comman">
+                <div>
+                    <label for="by_upi">upi id :</label>
+                    <input type="text" id="by_upi">
+                </div>
+                <div>
+                    <label for="amount2">amount :</label>
+                    <input type="number" id="amount2">
+                </div>
+            </div>
+          </div>
+
+          <div class="result" style="display: none;" id="show_case">
+            <div class="pay_by_case comman">
+                <div>
+                    <label for="by_case">cash :</label>
+                    <input type="number" id="by_case">
+                </div>
+                <div>
+                    <label for="amount3">amount :</label>
+                    <input type="number" id="amount3">
+                </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="rem_fees_container utility m_b">
+            <label for="remaining_fees">remaining fees :</label>
+            <input type="text" id="remaining_fees" readonly>
+
+        </div>
+        <div class="button_container">
+            <button id="btn">covert pdf</button>
+        </div>
+
+
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>

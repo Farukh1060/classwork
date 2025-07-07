@@ -1,0 +1,23 @@
+
+body {
+  background-color: black;
+  color: white;
+}
+.count{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+button{
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 8px;
+}
+.increase{
+  background-color: rgb(20, 243, 20);
+  color: white;
+}
+.decrease{
+  background-color: red;
+  color: white;
+}

@@ -1,0 +1,146 @@
+<<<<<<< HEAD
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 350px;
+    margin-block: 50px;
+    border: 5px groove black;
+    // border-style: groove;
+    margin-inline: auto;
+
+    .display{
+        display: flex;
+        height: 40px;
+        // padding: 10px;
+        margin: 8px;
+        // border: 2px solid black;
+        vertical-align: middle;
+        // p{
+        //     // width: 50%;
+        //     padding: 5px;
+        //     font-size: 20px;
+        //     // border: 1px solid red;
+        // }
+        // #ans{
+        //     border: 1px solid red;
+        // }
+        input{
+            width: 100%;
+            #calculate{
+                // direction: rtl;
+                border: 1px solid rgb(0, 255, 115);
+    
+            }
+        }
+        
+    }
+    .button{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 2px;
+        margin: 5px;
+
+        .spn{
+            grid-column: 1 /span 2;
+        }
+
+        
+            
+            button{
+                
+                    width: 100%;
+                    border: 1px solid black;
+                    padding: 10px ;
+                    font-size: 17px;
+                    font-weight: 600;
+                    background-color: blue;
+                    color: white;
+                
+                
+               
+                    &:hover{
+                        transform: scale(1.02);
+                    }
+            }
+
+        
+
+    }
+
+=======
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 350px;
+    margin-block: 50px;
+    border: 5px groove black;
+    // border-style: groove;
+    margin-inline: auto;
+
+    .display{
+        display: flex;
+        height: 40px;
+        // padding: 10px;
+        margin: 8px;
+        // border: 2px solid black;
+        vertical-align: middle;
+        // p{
+        //     // width: 50%;
+        //     padding: 5px;
+        //     font-size: 20px;
+        //     // border: 1px solid red;
+        // }
+        // #ans{
+        //     border: 1px solid red;
+        // }
+        input{
+            width: 100%;
+            #calculate{
+                // direction: rtl;
+                border: 1px solid rgb(0, 255, 115);
+    
+            }
+        }
+        
+    }
+    .button{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 2px;
+        margin: 5px;
+
+        .spn{
+            grid-column: 1 /span 2;
+        }
+
+        
+            
+            button{
+                
+                    width: 100%;
+                    border: 1px solid black;
+                    padding: 10px ;
+                    font-size: 17px;
+                    font-weight: 600;
+                    background-color: blue;
+                    color: white;
+                
+                
+               
+                    &:hover{
+                        transform: scale(1.02);
+                    }
+            }
+
+        
+
+    }
+
+>>>>>>> origin/main
+}

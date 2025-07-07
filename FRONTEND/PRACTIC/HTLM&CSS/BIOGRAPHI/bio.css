@@ -1,0 +1,126 @@
+<<<<<<< HEAD
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(174, 204, 232);
+    border: 10px solid rgb(163, 16, 16);
+}
+.containt{
+    max-width: 900px;
+    margin-inline: auto;
+    /* border: 2px solid red; */
+    /* background-color: black; */
+}
+.showcase{
+    display: flex;
+    justify-content: space-between;
+    h2{
+        font-size: 42px;
+    }
+    p{
+        text-align: end;
+    }
+    margin-block: 50px;
+}
+.showcase img{
+    width: 250px;
+    border-radius: 50%;
+}
+.name{
+    align-self: flex-end;
+}
+.bio_cont{
+    text-transform: capitalize;
+
+    h1{
+        /* text-align: center; */
+        font-size: 50px;
+        margin-bottom: 20px;
+        
+    }
+    p{
+        line-height: 1.3;
+        word-spacing: 1.5px;
+        text-align: justify;
+    }
+}
+.bio_data h3{
+    text-transform: capitalize;
+ margin: 50px 0px 20px 0px;
+}
+.bio_data ul{
+    margin-left:40px;
+    li{
+        padding: 5px 0px;
+    }
+}
+.footer{
+    margin-top: 20px;
+    text-align: right;
+=======
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(174, 204, 232);
+    border: 10px solid rgb(163, 16, 16);
+}
+.containt{
+    max-width: 900px;
+    margin-inline: auto;
+    /* border: 2px solid red; */
+    /* background-color: black; */
+}
+.showcase{
+    display: flex;
+    justify-content: space-between;
+    h2{
+        font-size: 42px;
+    }
+    p{
+        text-align: end;
+    }
+    margin-block: 50px;
+}
+.showcase img{
+    width: 250px;
+    border-radius: 50%;
+}
+.name{
+    align-self: flex-end;
+}
+.bio_cont{
+    text-transform: capitalize;
+
+    h1{
+        /* text-align: center; */
+        font-size: 50px;
+        margin-bottom: 20px;
+        
+    }
+    p{
+        line-height: 1.3;
+        word-spacing: 1.5px;
+        text-align: justify;
+    }
+}
+.bio_data h3{
+    text-transform: capitalize;
+ margin: 50px 0px 20px 0px;
+}
+.bio_data ul{
+    margin-left:40px;
+    li{
+        padding: 5px 0px;
+    }
+}
+.footer{
+    margin-top: 20px;
+    text-align: right;
+>>>>>>> origin/main
+}

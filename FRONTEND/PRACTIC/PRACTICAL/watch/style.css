@@ -1,0 +1,16 @@
+.container{
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    max-width: max-content;
+    margin-inline: auto;
+    background-color: blue;
+    font-size: 20px;
+    color: white;
+}
+div{
+    /* border: 1px solid brown; */
+    padding: 5px;
+    font-size: 20px;
+    margin: 5px;
+}

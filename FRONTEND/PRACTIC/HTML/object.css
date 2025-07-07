@@ -1,0 +1,30 @@
+<<<<<<< HEAD
+img{
+    border: 1px solid red;
+    height: 400px;
+    width: 500px;
+    /* object-fit: contain; */
+    object-fit: contain;
+    object-position: right;
+}
+a:link{
+    color: rgb(226, 80, 43);
+}
+a:hover{
+    color: black;
+=======
+img{
+    border: 1px solid red;
+    height: 400px;
+    width: 500px;
+    /* object-fit: contain; */
+    object-fit: contain;
+    object-position: right;
+}
+a:link{
+    color: rgb(226, 80, 43);
+}
+a:hover{
+    color: black;
+>>>>>>> origin/main
+}

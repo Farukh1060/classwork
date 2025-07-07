@@ -1,0 +1,238 @@
+<<<<<<< HEAD
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.flex {
+    display: flex;
+    justify-content:  space-between;
+}
+
+.container{
+    max-width: 700px;
+    margin-inline: auto;
+    background-color: bisque;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+     box-shadow: 2px 2px 5px grey;
+}
+.web{
+    font-size: 22px;
+}
+label{
+    font-size: 22px;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: rgb(67, 67, 67);
+}
+input , select{
+    height: 45px;
+    border-radius: 16px;
+    border: none;
+    padding: 0px 15px;
+    color: rgb(67, 67, 67);
+    background-color:beige;
+    font-size: 20px; 
+}
+input[placeholder]{
+    font-size: 20px;
+}
+input:focus{
+    outline: rgba(67, 67, 67, 0.364) solid 2px;
+}
+.firstname, .email, .city ,.date{
+    flex-direction: column;
+    width: 40%;
+    row-gap: 10px;
+    margin-block: 10px;
+}
+.lastname ,.job, .pincode,.file{
+    flex-direction: column;
+    width: 40%;
+    row-gap: 10px;
+    margin-block: 10px;
+}
+#addr{
+    resize: none;
+    width: 100%;
+}
+.btn{
+    margin: 30px 0px 10px 0px;
+    justify-content: flex-end;
+}
+.btn button{
+   max-width: fit-content;
+    padding: 10px 25px;
+    font-size: 20px;
+    background-color: bisque;
+    color: cadetblue;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px grey;
+    
+}
+.btn button:hover{
+    color: rgb(64, 64, 64);
+    transform: scale(1.03,1.03);
+    transition: all 250ms;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgb(64, 64, 64);
+}
+
+
+
+
+
+
+
+
+
+
+
+.space{
+    margin-top: 50px;
+
+}
+
+
+@media screen and (max-width:500px){
+    .firstname, .email, .city ,.date{
+    flex-direction: row;
+    width: 100%;
+}
+.lastname ,.job, .pincode,.file{
+    flex-direction: row;
+    width: 100%;
+}
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    /* margin: 30px 0px 10px 0px; */
+    align-items: flex-end;
+}
+
+
+=======
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.flex {
+    display: flex;
+    justify-content:  space-between;
+}
+
+.container{
+    max-width: 700px;
+    margin-inline: auto;
+    background-color: bisque;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+     box-shadow: 2px 2px 5px grey;
+}
+.web{
+    font-size: 22px;
+}
+label{
+    font-size: 22px;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: rgb(67, 67, 67);
+}
+input , select{
+    height: 45px;
+    border-radius: 16px;
+    border: none;
+    padding: 0px 15px;
+    color: rgb(67, 67, 67);
+    background-color:beige;
+    font-size: 20px; 
+}
+input[placeholder]{
+    font-size: 20px;
+}
+input:focus{
+    outline: rgba(67, 67, 67, 0.364) solid 2px;
+}
+.firstname, .email, .city ,.date{
+    flex-direction: column;
+    width: 40%;
+    row-gap: 10px;
+    margin-block: 10px;
+}
+.lastname ,.job, .pincode,.file{
+    flex-direction: column;
+    width: 40%;
+    row-gap: 10px;
+    margin-block: 10px;
+}
+#addr{
+    resize: none;
+    width: 100%;
+}
+.btn{
+    margin: 30px 0px 10px 0px;
+    justify-content: flex-end;
+}
+.btn button{
+   max-width: fit-content;
+    padding: 10px 25px;
+    font-size: 20px;
+    background-color: bisque;
+    color: cadetblue;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px grey;
+    
+}
+.btn button:hover{
+    color: rgb(64, 64, 64);
+    transform: scale(1.03,1.03);
+    transition: all 250ms;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgb(64, 64, 64);
+}
+
+
+
+
+
+
+
+
+
+
+
+.space{
+    margin-top: 50px;
+
+}
+
+
+@media screen and (max-width:500px){
+    .firstname, .email, .city ,.date{
+    flex-direction: row;
+    width: 100%;
+}
+.lastname ,.job, .pincode,.file{
+    flex-direction: row;
+    width: 100%;
+}
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    /* margin: 30px 0px 10px 0px; */
+    align-items: flex-end;
+}
+
+
+>>>>>>> origin/main
+}

@@ -1,0 +1,5 @@
+.bbtn {
+    float: right;
+    display: flex;
+    align-items: center;
+}

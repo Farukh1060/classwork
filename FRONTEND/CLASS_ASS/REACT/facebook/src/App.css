@@ -1,0 +1,14 @@
+#root {
+  max-width: 1280px;
+  /* margin: 0 auto;
+  padding: 2rem; */
+}
+.container{
+  display: flex;
+  height: 100vh;
+  /* width: 700px; */
+  /* border: 1px solid red; */
+  align-items: center;
+  justify-content: center;
+}
+

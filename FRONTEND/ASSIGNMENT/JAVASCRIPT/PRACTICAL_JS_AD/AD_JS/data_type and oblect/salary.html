@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let salary = {
+            john :100,
+            pete:300,
+            marry:250
+            // ,marry1:250
+
+        }
+
+        function sumsalary(x){
+            let sum = 0
+           let salaryvalue = Object.values(x)
+           for(let val of salaryvalue){
+               sum += val
+            }
+            console.log(sum)
+
+        }
+        sumsalary(salary)
+
+    </script>
+</body>
+</html>

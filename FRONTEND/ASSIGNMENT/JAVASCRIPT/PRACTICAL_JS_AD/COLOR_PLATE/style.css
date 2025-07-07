@@ -1,0 +1,10 @@
+body{
+    text-transform: capitalize;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#dis{
+    height: 150px;
+    width: 150px;
+    border: 1px solid red;
+    margin-top: 30px;
+}

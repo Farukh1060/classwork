@@ -1,0 +1,94 @@
+<<<<<<< HEAD
+.container{
+    color: gray;
+    margin-inline: auto;
+    max-width: 400px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 2px 3px 8px gray;
+}
+.feild{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.container .feild button {
+    font-size: 16px;
+    padding: 8px 15px;
+    background-color: cadetblue;
+    border: none;
+    color: aliceblue;
+    border-radius: 35px;
+    transition: all 400ms;
+}
+.container .feild button:hover{
+    color: rgba(252, 229, 229, 0.729);
+    box-shadow: 2px 3px 8px rgba(45, 23, 23, 0.729);
+}
+.container  input{
+
+    padding: 5px 2px;
+}
+.container label {
+    font-size: 18px;
+    text-transform: capitalize;
+    
+}
+.container input:focus {
+
+    outline: none;
+    border: 2px solid grey;
+   
+=======
+.container{
+    color: gray;
+    margin-inline: auto;
+    max-width: 400px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 2px 3px 8px gray;
+}
+.feild{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.container .feild button {
+    font-size: 16px;
+    padding: 8px 15px;
+    background-color: cadetblue;
+    border: none;
+    color: aliceblue;
+    border-radius: 35px;
+    transition: all 400ms;
+}
+.container .feild button:hover{
+    color: rgba(252, 229, 229, 0.729);
+    box-shadow: 2px 3px 8px rgba(45, 23, 23, 0.729);
+}
+.container  input{
+
+    padding: 5px 2px;
+}
+.container label {
+    font-size: 18px;
+    text-transform: capitalize;
+    
+}
+.container input:focus {
+
+    outline: none;
+    border: 2px solid grey;
+   
+>>>>>>> origin/main
+}

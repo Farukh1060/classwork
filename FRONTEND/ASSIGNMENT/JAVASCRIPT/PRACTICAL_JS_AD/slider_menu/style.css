@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family:  Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.container{
+    background-image: url(../../../../../../../photo/journey-to-tortuga-4k-9y.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center bottom;
+    height: 100vh;
+    position: relative;
+}
+.icon{
+    position: absolute;
+    right: 0;
+    color: wheat;
+    padding: 30px;
+    font-size: 25px;
+}
+.togal{
+display: none;
+transition: all ease-in-out 2s;
+}
+.menu_bar{
+    position: absolute;
+    /* left: -80px; */
+    /* display: none; */
+    border: 1px solid gray;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.6);
+    }
+    .menu_bar ul{
+        padding:80px 10px;
+        display: grid;
+        gap: 25px;
+}
+.menu_bar ul li a{
+    text-decoration: none;
+    color: wheat;
+    font-size: 20px;
+    
+}

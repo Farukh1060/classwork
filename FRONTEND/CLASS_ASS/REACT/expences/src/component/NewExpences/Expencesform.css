@@ -1,0 +1,39 @@
+.form{
+    display: grid;
+    grid-template-columns: auto auto ;
+    gap: 15px;
+    justify-content: space-between;
+    background-color: rgb(168, 168, 223);
+    padding: 25px;
+    border-radius: 8px;
+    /* color: white; */
+}
+.flex{
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+
+    
+}
+label{
+    font-size: x-large;
+   }
+input{
+    padding: 6px 6px;
+    font-size: large;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+}
+input:focus{
+    outline: none;
+}
+button{
+    font-size: large;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+}

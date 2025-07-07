@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <form action="#" class="form_container" id="form">
+            <div class="f_name grid">
+                <label for="fname">first name</label>
+                <input type="text" id="fname">
+                <p></p>
+            
+            </div>
+            <div class="l_name grid">
+                <label for="lname">last name</label>
+                <input type="text" id="lname">
+                <p></p>
+            </div>
+            <div class="gen grid">
+                <label>gender</label>
+                <div >
+                    <div class="gen_con">
+                        <label for="male">male</label>
+                        <input type="radio" name="gender" id="male">
+            
+                        <label for="fmale">female</label>
+                        <input type="radio" name="gender" id="fmale">
+                    </div>
+                    <div id="err"></div>
+                </div>
+                <p></p>
+                
+            </div>
+            <div class="add grid">
+                <label for="address">address</label>
+                <textarea name="address" id="address" placeholder="35 to 200 char are allow"></textarea>
+                <p></p>
+            </div>
+            <div class="city_container grid">
+                <label for="city">city</label>
+                <input type="text" id="city">
+                <p></p>
+            </div>
+            <div class="num grid">
+                <label for="number">number</label>
+                <input type="number" id="numb">
+                <p></p>
+            </div>
+    
+            <div class="email grid">
+                <label for="e_mail">email</label>
+                <input type="email" name="" id="e_mail">
+                <p></p>
+            </div>
+            <div class="pass grid">
+                <label for="password">password</label>
+
+                <div class="icon_con">
+                    <input type="password" name="" id="password">
+                    <span class="icon">
+                        <i id="pw" class="fa-solid fa-eye-slash"></i>
+                    </span>
+                </div>
+                <p></p>
+            </div>
+            <div class="cnfpass grid">
+                <label for="cnfpassword">condirm password</label>
+
+                <div class="icon_con">
+                    <input type="password" name="" id="cnfpassword">
+                    <span class="icon">
+                        <i id="cnfpw" class="fa-solid fa-eye-slash"></i>
+                    </span>
+                </div>
+                <p></p>
+            </div>
+            <div class="btn">
+                <input type="submit" value="submit" id="sub">
+            </div>
+    
+        </form>
+        
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

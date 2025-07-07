@@ -1,0 +1,12 @@
+.title{
+    /* border: 1px solid red; */
+    
+    padding: 25px;
+}
+h1{
+    color: rgb(116, 116, 252);
+    font-size: 42px;
+}
+p{
+    font-size: 22px;
+}

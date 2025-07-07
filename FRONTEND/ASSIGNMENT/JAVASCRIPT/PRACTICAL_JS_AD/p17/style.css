@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
+.container{
+    max-width: 800px;
+    margin-inline: auto;
+    border: 1px solid red;
+    padding: 15px;
+}
+.form_container{
+    display: grid;
+    gap: 10px;
+
+}
+.grid{
+    /* width: 100%; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 300px;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+
+}
+input ,textarea{
+    background-color: transparent;
+    border: 1px solid black;
+    font-size: 20px;
+    padding: 5px;
+    margin-block: 5px;
+
+}
+
+textarea{
+    min-width: 100%;
+    resize: none;
+    
+}
+textarea::placeholder{
+    font-size: 14px;
+}
+input[type="radio"]{
+    border: 1px solid red;
+  /* display: inline-block; */
+  /* width: 50px; */
+ /* width: 100px; */
+}
+input[type="submit"]{
+    color:white;
+    border: none;
+    border-radius: 5px;
+    background-color: cadetblue;
+    padding: 5px 10px;
+}
+input::-webkit-inner-spin-button{
+    appearance: none;
+}
+
+input:focus,textarea:focus{
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid gray;
+}
+.gen_con{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+}
+.msg{
+    
+    color: red;
+    font-size: 16px;
+}
+.error{
+    
+    border-radius: 5px;
+    border: 1px solid red;
+}
+.icon_con{
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+}
+.icon{
+    position: absolute;
+    right: 5px;
+    /* z-index: -1; */
+}
+.boder{
+    width: 195px;
+    height: 2px;
+    border-bottom: 1px solid red;
+    animation-name:changeWidth ;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes changeWidth {
+    0%{
+        width: 0px;
+    }
+    100%{
+        width: 195px;
+    }
+}
+
+

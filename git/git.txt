@@ -1,0 +1,1014 @@
+git init
+git status
+git diff
+git add
+git commit
+git branch
+git push
+git pull
+git log
+git show
+git restore 
+restore --worktree .
+git reset
+mkdir filename
+git ls
+git cd
+git cd..
+git cd ~
+git checkout file link
+
+
+
+
+
+
+PS F:\git> git --version
+git version 2.43.0.windows.1
+
+
+PS F:\git> git status                                         //to check status
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)  
+        index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+PS F:\git> git add index.html                           //to add file   // PS F:\git> git add * (for all file to add)
+PS F:\git> git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)                          // now the flie is ready to commit
+        new file:   index.html                                          // after add the file come to stage area (in between )
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+PS F:\git> git commit -m "first v1 of index.html"                      // to commit and message create current stage changes and creat perment record in repository history
+[main (root-commit) 4c560f7] first v1 of index.html
+ 1 file changed, 11 insertions(+)
+ create mode 100644 index.html
+-----------------------------------------------------------------------------------------------------------------
+PS F:\git> git branch                            // to check branch
+* main
+PS F:\git> 
+----------------------------------------------------------------------------------------------------------------
+PS F:\git> git log                                                   // git log is used to check the commit thing
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+
+PS F:\git> git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+-----------------------------------------------------------------------git diff to check different between to version=---------------------------------- 
+PS F:\git> git diff
+diff --git a/index.html b/index.html
+index d01f779..006a3ca 100644
+--- a/index.html
+diff --git a/index.html b/index.html
+index d01f779..006a3ca 100644
+--- a/index.html
++++ b/index.html
+@@ -6,6 +6,6 @@
+     <title>Document</title>
+ </head>
+ <body>
+-    
++    <p>this is version v2</p>
+...skipping...
+diff --git a/index.html b/index.html
+index d01f779..006a3ca 100644
+--- a/index.html
++++ b/index.html
+@@ -6,6 +6,6 @@
+     <title>Document</title>
+ </head>
+ <body>
+-    
++    <p>this is version v2</p>
+...skipping...
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+HELP -- Press RETURN for more, or q when done...skipping...
+index d01f779..006a3ca 100644
+--- a/index.html
++++ b/index.html
+@@ -6,6 +6,6 @@
+-    
++    <p>this is version v2</p>
+PS F:\git> git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: "git config advice.addEmptyPathspec false"
+PS F:\git> git add .
+PS F:\git> git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+--------------------------------------------------------------------
+PS F:\git> git commit -m "this is v2"
+[main cd56a84] this is v2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+--------------------------------------------------------------------git log to chech commit 
+PS F:\git> git log
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+------------------------------------------------------------add and commit v3
+PS F:\git> git add index.html
+PS F:\git> git commit -m "this is v3"
+[main 21b3315] this is v3
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS F:\git> git log
+commit 21b33155302f0298f4bee64527dcf990c2f2862e (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+PS F:\git> 
+-----------------------------------------------------------check older version file
+PS F:\git> git log                                                            // first git log and check all version and copy link for older version file
+commit 21b33155302f0298f4bee64527dcf990c2f2862e (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+PS F:\git> git show 4c560f7f3e29547e7e82e8a0bd1da650eadceede:index.html                //then git show and past link and give file name to check or use * to show all 
+<!DOCTYPE html>                                                                        // show in terminal for small file 
+<html lang="en">                                                                       // but want to show in vs code use git checkout
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>s
+</head>
+<body>
+
+</body>
+</html>
+PS F:\git> 
+--------------------------------------------------------------for checkout older version
+
+PS F:\git> git checkout 4c560f7f3e29547e7e82e8a0bd1da650eadceede -- *
+-----------------------------------------------------------after checkout older version to get back latest version  
+
+PS F:\git> git checkout main -- *
+
+-------------------------------------git restore if we add somthing accidently and dont know, so to restore previsiou file use restore
+
+PS F:\git> git restore .
+
+--------------------------------------------------------if we save  and (git add)accidently somthing wrong and file is in stage area
+
+PS F:\git> git status   //just save
+On branch main
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+PS F:\git> git add index.html        //git add and file go to stage area
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+
+PS F:\git> git diff --cached         // check the change
+diff --git a/index.html b/index.html
+index 579c14c..61de242 100644
+--- a/index.html
++++ b/index.html
+@@ -8,4 +8,5 @@
+     <p>this is version v3</p>
++xxxxxxxxxxxxxxx
+ </html>
+\ No newline at end of file
+
+PS F:\git> git restore --staged            //restore from stage area
+fatal: you must specify path(s) to restore
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+    
+PS F:\git> git restore --staged index.html
+
+
+PS F:\git> git status
+On branch main
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+PS F:\git> git restore .
+PS F:\git> 
+
+
+---------------------------------------------------------------
+PS F:\git> git add .                                 // add correct thing and in stage area
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+
+PS F:\git> git status          /// add in work directriory wrong thing and check status 
+On branch main
+Changes to be committed:     // 
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+PS F:\git> git restore --worktree .
+------------------------------------------------------------------------after commit want to come back
+PS F:\git> git reset --hard head^
+HEAD is now at 6d2c37e this is v4
+
+
+----------------------------------------------------------------
+PS F:\git> git log -p -2
+commit 6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Tue Jul 9 20:04:55 2024 +0530
+
+    this is v4
+
+diff --git a/index.html b/index.html
+index 579c14c..a10f638 100644
+--- a/index.html
++++ b/index.html
+@@ -6,6 +6,8 @@
+     <title>Document</title>
+ </head>
+ <body>
+-    <p>this is version v3</p>
++    <p>this is version v4
++        
++    </p>
+ </body>
+ </html>
+\ No newline at end of file
+
+commit 21b33155302f0298f4bee64527dcf990c2f2862e
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+diff --git a/index.html b/index.html
+index 006a3ca..579c14c 100644
+--- a/index.html
++++ b/index.html
+@@ -6,6 +6,6 @@
+     <title>Document</title>
+ </head>
+ <body>
+-    <p>this is version v2</p>
++    <p>this is version v3</p>
+ </body>
+ </html>
+\ No newline at end of file
+PS F:\git> 
+
+----------------------------------------------------------------------------
+PS F:\git> git log --stat
+commit 6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Tue Jul 9 20:04:55 2024 +0530
+
+    this is v4
+
+ index.html | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 21b33155302f0298f4bee64527dcf990c2f2862e
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+ index.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+ index.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+
+ index.html | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+-----------------------------------------------------------------------------------
+PS F:\git> git log --pretty=oneline
+6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main) this is v4
+21b33155302f0298f4bee64527dcf990c2f2862e this is v3
+cd56a84a54f6ebc172c15c56fb7980da4160f977 this is v2
+4c560f7f3e29547e7e82e8a0bd1da650eadceede first v1 of index.html
+
+
+PS F:\git> git log --pretty=format :"%h - %an,%ar:%s"
+fatal: invalid --pretty format: format
+
+
+PS F:\git> git log --pretty=format:"%h - %an,%ar:%s"
+6d2c37e - shaikh farukh,52 minutes ago:this is v4
+21b3315 - shaikh farukh,2 days ago:this is v3
+cd56a84 - shaikh farukh,2 days ago:this is v2
+4c560f7 - shaikh farukh,2 days ago:first v1 of index.html
+
+---------------------------------------------------------------------------------
+PS F:\git> git log -S "p"
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+PS F:\git> git log -S "v3"
+commit 6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Tue Jul 9 20:04:55 2024 +0530
+
+    this is v4
+
+commit 21b33155302f0298f4bee64527dcf990c2f2862e
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+(END)
+
+PS F:\git> git log --grep = "v"
+fatal: ambiguous argument 'v': unknown revision or path not in the working tree.        
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+PS F:\git> git log --grep="v"  
+commit 6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Tue Jul 9 20:04:55 2024 +0530
+
+    this is v4
+
+commit 21b33155302f0298f4bee64527dcf990c2f2862e
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+(END)
+ *  History restored 
+
+q : The term 'q' is not recognized as the name of a cmdlet, function, script file, or 
+operable program. Check the spelling of the name, or if a path was included, verify     
+At line:1 char:1
++ q
++ ~
+    + CategoryInfo          : ObjectNotFound: (q:String) [], CommandNotFoundException   
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS F:\git> ls
+
+
+    Directory: F:\git
+PS F:\git> git log -S "p"
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977 
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+PS F:\git> git log  --grep="v" 
+commit 6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Tue Jul 9 20:04:55 2024 +0530
+
+    this is v4
+
+commit 21b33155302f0298f4bee64527dcf990c2f2862e
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.htmlPS F:\git> git log --grep = "v"
+fatal: ambiguous argument 'v': unknown revision or path not in the working tree.        
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+PS F:\git> git log --grep="v"  
+commit 6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Tue Jul 9 20:04:55 2024 +0530
+
+    this is v4
+
+commit 21b33155302f0298f4bee64527dcf990c2f2862e
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+(END)
+ *  History restored 
+
+q : The term 'q' is not recognized as the name of a cmdlet, function, script file, or 
+operable program. Check the spelling of the name, or if a path was included, verify     
+At line:1 char:1
++ q
++ ~
+    + CategoryInfo          : ObjectNotFound: (q:String) [], CommandNotFoundException   
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS F:\git> ls
+
+
+    Directory: F:\git
+PS F:\git> git log -S "p"
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977 
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+
+---------------------------------------------------------------------------------------------------
+PS F:\git> git log  --grep="v" 
+commit 6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Tue Jul 9 20:04:55 2024 +0530
+
+    this is v4
+
+commit 21b33155302f0298f4bee64527dcf990c2f2862e
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+
+------------------------------------------------------------------------------
+PS F:\git> git log --author = "shaikh farukh"
+fatal: ambiguous argument 'shaikh farukh': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+PS F:\git> git log --author="shaikh farukh"  
+commit 6d2c37e538a9353986e3f18b11637e13a8c0aa85 (HEAD -> main)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Tue Jul 9 20:04:55 2024 +0530
+
+    this is v4
+
+commit 21b33155302f0298f4bee64527dcf990c2f2862e
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:37:24 2024 +0530
+
+    this is v3
+
+commit cd56a84a54f6ebc172c15c56fb7980da4160f977
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 17:27:48 2024 +0530
+
+    this is v2
+
+commit 4c560f7f3e29547e7e82e8a0bd1da650eadceede
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 7 16:51:46 2024 +0530
+
+    first v1 of index.html
+
+-------------------------------------------------------------------------------------------
+PS F:\git> git add index.html
+PS F:\git> git status
+Your branch is up to date with 'origin/main'.
+
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+
+PS F:\git> git commit -m "v5"
+[main 15f4adb] v5
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS F:\git> git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 267 bytes | 133.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Farukh1060/git.git
+   6d2c37e..15f4adb  main -> main
+---------------------------------------------------------------------------------------
+PS F:\git> git pull
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 928 bytes | 8.00 KiB/s, done.
+From https://github.com/Farukh1060/git
+   15f4adb..2da9d74  main       -> origin/main
+Updating 15f4adb..2da9d74
+Fast-forward
+ pull | 1 +s
+ 1 file changed, 1 insertion(+)
+ create mode 100644 pull
+
+--------------------------------------------------------------------------------------
+PS F:\git> mkdir clone                                       
+
+
+    Directory: F:\git
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        13-07-2024     07:21                clone
+
+
+PS F:\git> cd clone
+PS F:\git\clone> git clone https://github.com/urvashidbhavsar/Advanced_js.git
+remote: Enumerating objects: 46, done.
+remote: Counting objects: 100% (46/46), done.
+remote: Compressing objects: 100% (42/42), done.
+remote: Total 46 (delta 8), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (46/46), 8.57 KiB | 117.00 KiB/s, done.
+Resolving deltas: 100% (8/8), done.
+PS F:\git\clone> ls
+
+
+    Directory: F:\git\clone
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        13-07-2024     07:23                Advanced_js
+
+
+PS F:\git\clone> cd clone/
+cd : Cannot find path 'F:\git\clone\clone\' because it does not exist.
+At line:1 char:1
++ ~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (F:\git\clone\clone\:String) [Set-Locat  
+   ion], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationC  
+   ommand
+ 
+PS F:\git\clone> ls
+
+
+    Directory: F:\git\clone
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        13-07-2024     07:23                Advanced_js
+
+=----------------------------------------------------------------------------------------------------------------
+
+PS F:\git> git branch
+* main
+PS F:\git> ls
+
+
+    Directory: F:\git
+
+
+----                 -------------         ------ ----
+d-----        13-07-2024     07:23                clone
+-a----        12-07-2024     20:46            256 index.html
+-a----        12-07-2024     20:59             11 pull
+------------------------------------------------------------------------------------------------------
+
+PS F:\git> cd clone
+PS F:\git\clone> 
+
+--------------------------------------------------------------------------------------------------------
+
+PS F:\git\clone> cd advanced_js
+PS F:\git\clone\advanced_js> ls
+
+
+    Directory: F:\git\clone\advanced_js
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        13-07-2024     07:23                Arrays
+d-----        13-07-2024     07:23                arrowFunctions
+d-----        13-07-2024     07:23                functions
+d-----        13-07-2024     07:23                Higher_order
+d-----        13-07-2024     07:23                map
+
+---------------------------------------------------------------------------------------------------------------
+
+PS F:\git> cd clone
+PS F:\git\clone> cd advanced_js
+PS F:\git\clone\advanced_js> cd arrays
+PS F:\git\clone\advanced_js\arrays>
+
+PS F:\git\clone\advanced_js> 
+PS F:\git\clone\advanced_js\arrays> cd..
+PS F:\git\clone\advanced_js> cd..
+PS F:\git\clone> cd..
+PS F:\git> 
+
+for direct home directry
+PS F:\git\clone\advanced_js\arrays> cd ~
+PS C:\Users\salman> 
+
+-------------------------------------------------------------------------------------------------------------------
+PS F:\git> git branch
+* main
+PS F:\git> git branch design
+PS F:\git> git branch
+  design
+* main
+
+--------------------------------------chanfe branch
+
+PS F:\git> git checkout design
+Switched to branch 'design'
+M       index.html
+PS F:\git> git branch
+* design
+  main
+
+------------------------------------------------------------
+PS F:\git> git add *
+warning: adding embedded git repository: clone/Advanced_js
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint:   git submodule add <url> clone/Advanced_js
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint:   git rm --cached clone/Advanced_js
+hint: 
+hint: See "git help submodule" for more information.
+PS F:\git> git status
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   clone/Advanced_js
+        modified:   index.html
+
+PS F:\git> git rm --cached clone/Advanced_js
+error: the following file has staged content different from both the
+file and the HEAD:
+    clone/Advanced_js
+(use -f to force removal)
+PS F:\git> -f
+-f : The term '-f' is not recognized as the name of a cmdlet, function, script file, 
+or operable program. Check the spelling of the name, or if a path was included, verify  
+At line:1 char:1
++ -f
++ ~~
+    + CategoryInfo          : ObjectNotFound: (-f:String) [], CommandNotFoundException  
+PS F:\git> git reatore clone
+git: 'reatore' is not a git command. See 'git --help'.
+
+The most similar command is
+        restore
+PS F:\git> git restore clone
+PS F:\git> git status
+On branch design
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   clone/Advanced_js
+        modified:   index.html
+        new file:   style.css
+
+
+PS F:\git> git commit --m "design"
+
+---------------------------------------------------------------------- change branch
+PS F:\git> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+PS F:\git>
+
+------------------------------------------------------------------------------------merge
+S F:\git> git merge design
+Updating 2da9d74..8e1de43
+Fast-forward
+ index.html |  5 ++---
+ style.css  | 11 +++++++++++
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+ create mode 100644 style.css
+-------------------------------------------------------------------------------conflick in merging
+PS F:\git> git branch
+  design
+* main
+PS F:\git> git checkout design
+Switched to branch 'design'
+PS F:\git> git status
+On branch design
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+
+[design 57066ab] change in design
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS F:\git> git checkout main
+warning: unable to rmdir 'clone/Advanced_js': Directory not empty
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+
+PS F:\git> git add *
+warning: adding embedded git repository: clone/Advanced_js
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint:   git submodule add <url> clone/Advanced_js
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint:   git rm --cached clone/Advanced_js
+hint: 
+hint: See "git help submodule" for more information.
+
+
+PS F:\git> git commit -m "change in main"
+[main d875978] change in main
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 160000 clone/Advanced_js
+
+PS F:\git> git branch
+  design
+* main
+PS F:\git> git checkout design
+Switched to branch 'design'
+PS F:\git> git status
+On branch design
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+
+[design 57066ab] change in design
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS F:\git> git checkout main
+warning: unable to rmdir 'clone/Advanced_js': Directory not empty
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+PS F:\git> git add *
+warning: adding embedded git repository: clone/Advanced_jss
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint:   git submodule add <url> clone/Advanced_js
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint:   git rm --cached clone/Advanced_js
+hint: 
+hint: See "git help submodule" for more information.
+
+---------------------------------
+PS F:\git> git commit -m "change in main"
+[main d875978] change in main
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 160000 clone/Advanced_js
+-----------------------------------------------------------
+PS F:\git> git clean -n
+PS F:\git> git clean -f
+
+=--------------------------------------------------------------------------
+PS F:\git> git tag -a v7 -m "gitignore"
+PS F:\git> git tag
+v7
+PS F:\git> git log
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 15:55:03 2024 +0530
+
+    add gitignore
+
+commit 9f625d6209b7695469e80b9f6b44f85e191d1f61 (origin/main)
+PS F:\git> git show v7
+tag v7
+Tagger: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 16:04:30 2024 +0530
+
+gitignore
+
+commit 2f0ea1719fe25244d3376acc1c33ef34ee5c2930 (HEAD -> main, tag: v7)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 15:55:03 2024 +0530
+
+    add gitignore
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..cbc1a20
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1 @@
++clone
+\ No newline at end of file
+
+0------------------------------------------------------------
+PS F:\git> git tag -a cng d875978a6e909038786bea6142b92d8ca9b2b9ef      
+PS F:\git> git tag
+cng
+v7
+
+
+--------------------------------------------------------
+PS F:\git> git log
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 15:55:03 2024 +0530
+
+    add gitignore
+
+commit 9f625d6209b7695469e80b9f6b44f85e191d1f61 (origin/main)
+PS F:\git> git show v7
+tag v7
+Tagger: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 16:04:30 2024 +0530
+
+gitignore
+
+commit 2f0ea1719fe25244d3376acc1c33ef34ee5c2930 (HEAD -> main, tag: v7)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 15:55:03 2024 +0530
+
+    add gitignore
+
+diff --git a/.gitignore b/.gitignore
+index 0000000..cbc1a20
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1 @@
++clone
+\ No newline at end of file
+PS F:\git> git log
+commit 2f0ea1719fe25244d3376acc1c33ef34ee5c2930 (HEAD -> main, tag: v7)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 15:55:03 2024 +0530
+
+    add gitignore
+
+commit 9f625d6209b7695469e80b9f6b44f85e191d1f61 (origin/main)
+Merge: d875978 e8560ca
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 13:37:01 2024 +0530
+
+    change
+
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+chang in min
+    change in main
+
+PS F:\git> git tag -a cng in mn d875978a6e909038786bea6142b92d8ca9b2b9ef
+fatal: too many arguments
+PS F:\git> git tag -a cng d875978a6e909038786bea6142b92d8ca9b2b9ef      
+PS F:\git> git tag
+cng
+v7
+PS F:\git> git log
+commit 2f0ea1719fe25244d3376acc1c33ef34ee5c2930 (HEAD -> main, tag: v7)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 15:55:03 2024 +0530
+
+    add gitignore
+
+commit 9f625d6209b7695469e80b9f6b44f85e191d1f61 (origin/main)
+Merge: d875978 e8560ca
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 13:37:01 2024 +0530
+
+    change
+
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 13:04:33 2024 +0530
+
+    change in main
+
+commit e8560ca17d62b6a15bb33498b1e5f5876d7f51ff
+PS F:\git> git show cng
+tag cng
+Tagger: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 16:08:57 2024 +0530
+
+chang in min
+
+commit d875978a6e909038786bea6142b92d8ca9b2b9ef (tag: cng)
+Author: shaikh farukh <shaikhfarukh60@gmail.com>
+Date:   Sun Jul 14 13:04:33 2024 +0530
+
+    change in main
