@@ -1,0 +1,162 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from rest_framework.decorators import APIView ,api_view
+from rest_framework.response import Response
+from myapp.models import *
+from myapp.serializer import *
+
+from rest_framework.permissions import IsAuthenticated,BasePermission,AllowAny
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
+# Create your views here.
+def index(request):
+    return HttpResponse("hi")
+
+class isStafUser(BasePermission):
+    def has_permission(self, request, view):
+       return request.user and request.user.is_authenticated and request.user.is_staff
+
+class UserRegistrationApi(APIView):
+    def post(self,request):
+        ser = userserializer(data=request.data)
+        if not ser.is_valid():
+            return Response({"error":ser.errors,"message":"something went wrong"})
+        ser.save()
+        return Response(ser.data)
+
+class CategoryApi(APIView):
+    authentication_classes=[JWTAuthentication]
+
+    def get_permissions(self):
+        if self.request.method in ["POST","PUT","DELETE"]:
+            return [IsAuthenticated(),isStafUser()]
+        return[AllowAny()]
+
+ 
+    
+    def get(self,request,pk=0):
+        if pk==0:
+            allcategory = Catageory.objects.all()
+            ser = Categoryserializer(allcategory,many = True)
+
+            return Response({"data":ser.data})
+        else:
+            category = Catageory.objects.get(pk = pk)
+            ser = Categoryserializer(category)
+            return Response({"data":ser.data})
+    
+    def post(self, request):
+        try:
+            ser = Categoryserializer(data = request.data)
+            if not ser.is_valid():
+                return Response({"error":ser.errors})
+            ser.save()
+            return Response({"data":ser.data,"message":"cate added"})
+        except Exception as e:
+                return Response({"error":e,"message":"something went wrong"})
+
+    def put(self,request,pk)    :
+        try:
+            category = Catageory.objects.get(pk = pk)
+            ser = Categoryserializer(category,data =request.data)
+
+            if not ser.is_valid():
+                return Response({"error":ser.errors})
+            ser.save()
+            return Response({"data":ser.data,"mess":"update"})
+        except Exception as e:
+            return Response({"error":e})  
+        
+    def delete(self,request,pk):
+        try:
+            category = Catageory.objects.get(pk=pk)
+            category.delete()
+            return Response({"msg":"deleted"})
+        except Exception as e:
+            return Response({"error":str(e),"msg":"something went wrong"})
+        
+class ProductApi(APIView):
+
+    authentication_classes=[JWTAuthentication]
+
+    def get_permissions(self):
+        if self.request.method in ["POST","PUT","DELETE"]:
+            return [IsAuthenticated(),isStafUser()]
+        return[AllowAny()]
+
+
+    def get(self,request,pk=0):
+        if pk==0:
+            allproduct = Product.objects.all()
+            ser = Categoryserializer(allproduct,many = True)
+
+            return Response({"data":ser.data})
+        else:
+            try:
+                product = Product.objects.get(pk = pk)
+            except Exception as e:
+                return Response({"error":str(e),"msg":"id not found"})
+            print(product)
+            ser = ProductSerializer(product)
+            return Response({"data":ser.data})
+    
+    def post(self, request):
+        try:
+            ser = ProductSerializer(data = request.data)
+            if not ser.is_valid():
+                return Response({"error":ser.errors})
+            ser.save()
+            return Response({"data":ser.data,"message":"cate added"})
+        except Exception as e:
+                return Response({"error":e,"message":"something went wrong"})
+
+    def put(self,request,pk)    :
+        try:
+            product = Product.objects.get(pk = pk)
+            ser = ProductSerializer(product,data =request.data)
+
+            if not ser.is_valid():
+                return Response({"error":ser.errors})
+            ser.save()
+            return Response({"data":ser.data,"mess":"update"})
+        except Exception as e:
+            return Response({"error":e})  
+        
+    def delete(self,request,pk):
+        try:
+            product = Product.objects.get(pk=pk)
+            product.delete()
+            return Response({"msg":"deleted"})
+        except Exception as e:
+            return Response({"error":str(e),"msg":"something went wrong"})
+        
+class ProductByCategoryAPI(APIView):
+    def get(self,request,pk):
+        # print("req",request.data)
+        # print(pk)
+        try:
+            products = Product.objects.filter(catageory_id=pk)
+            ser = ProductSerializer(products,many=True)
+            # if not ser.is_valid():
+            # no need to 
+            #     return Response({"error":ser.errors,"msg":"something went wrong"})
+            
+            # print("pro",products)
+            return Response(ser.data)
+        except Exception as e:
+            return Response({"error":str(e),"msg":"something went wrong"})
+        
+class CartAPI(APIView):
+
+    def get(self,request):
+        # print(request.user)
+        allcart = Cart.objects.filter(user = request.user)
+        ser = Cartserializer(allcart,many=True)
+        return Response({"data":ser.data})
+    def post(self,request):
+        ser = Cartserializer(data=request.data)
+        if not ser.is_valid():
+            return Response({"error":ser.errors,"msg":"something went wrong"})
+        ser.save()
+        return Response({"data":ser.data})
+

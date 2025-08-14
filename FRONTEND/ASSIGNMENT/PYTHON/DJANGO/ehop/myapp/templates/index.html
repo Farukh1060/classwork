@@ -742,24 +742,111 @@
 
 <script>
 
-$(document).ready(function(){
-  allCategories();
-    
-})
-
-const allCategories = () => {
-  $.get("categories", {}, function (rt) {
-     alert(rt)
+  $(document).ready(function(){
+    allCategories();
+    allProducts();
+      
   })
-}
+
+  const allCategories = () => {
+    // alert("kk")
+    $.get("CategoriesAPI", {}, function (rt) {
+      rt.map((category)=>{
+
+        $("#categories").append(
+           `<a href="shop.html" class="category__item swiper-slide">
+          <img
+            src="${category.category_image}"
+            alt="${category.category_image}"
+            class="category__img"
+          />
+          <h3 class="category__title">${category.name}</h3>
+        </a>`
+        )
+ 
+      })
+      
+    })
+  }
+
+  const allProducts = () => {
+    $.get("ProductAPI", {}, function (rt) {
+      console.log((rt));
+      rt.map((product)=>{
+          $("#products").append(
+            `<div class="product__item">
+            <div class="product__banner">
+              <a href="details.html" class="product__images">
+                <img
+                  src="${product.product_image}"
+                  alt="${product.image}"
+                  class="product__img default"
+                />
+                <img
+                  src="static/assets/img/product-1-2.jpg"
+                  alt=""
+                  class="product__img hover"
+                />
+              </a>
+              <div class="product__actions">
+                <a href="#" class="action__btn" aria-label="Quick View">
+                  <i class="fi fi-rs-eye"></i>
+                </a>
+                <a href="#" class="action__btn" aria-label="Add to Wishlist">
+                  <i class="fi fi-rs-heart"></i>
+                </a>
+                <a href="#" class="action__btn" aria-label="Compare">
+                  <i class="fi fi-rs-shuffle"></i>
+                </a>
+              </div>
+              <div class="product__badge light-pink">Hot</div>
+            </div>
+            <div class="product__content">
+              <span class="product__category">${product.category.name}</span>
+              <a href="details.html">
+                <h3 class="product__title">${product.name}</h3>
+              </a>
+              <div class="product__rating">
+                <i class="fi fi-rs-star"></i>
+                <i class="fi fi-rs-star"></i>
+                <i class="fi fi-rs-star"></i>
+                <i class="fi fi-rs-star"></i>
+                <i class="fi fi-rs-star"></i>
+              </div>
+              <div class="product__price flex">
+                <span class="new__price">$${product.price}</span>
+
+              </div>
+              <button
+
+                class="action__btn cart__btn"
+                aria-label="Add To Cart"
+                onclick='addToCart(${product.id})'
+              >
+                <i class="fi fi-rs-shopping-bag-add"></i>
+              </button>
+            </div>
+          </div>`
+          )
+      })
+    });
+  };
+
+  const addToCart = (pid)=>{
+    {% comment %} console.log(pid) {% endcomment %}
+    $.get("addtocart",{pid},function(rt){
+      console.log(rt)
+    })
+
+  }
 
 
 
 </script>
+ 
 
 
-
-{% comment %} <script>
+<!-- <script>
   $(document).ready(function () {
     allCategories();
     allProducts();
@@ -767,18 +854,20 @@ const allCategories = () => {
 
   const allCategories = () => {
     $.get("categories", {}, function (rt) {
-      rt.categories.forEach((category) => {
-        $("#categories").append(
-          `<a href="shop.html" class="category__item swiper-slide">
-          <img
-            src="media/${category.category_image}"
-            alt="${category.category_image}"
-            class="category__img"
-          />
-          <h3 class="category__title">${category.name}</h3>
-        </a>`
-        );
-      });
+
+      print(rt)
+      // rt.categories.forEach((category) => {
+      //   $("#categories").append(
+      //     `<a href="shop.html" class="category__item swiper-slide">
+      //     <img
+      //       src="media/${category.category_image}"
+      //       alt="${category.category_image}"
+      //       class="category__img"
+      //     />
+      //     <h3 class="category__title">${category.name}</h3>
+      //   </a>`
+      //   );
+      // });
     });
   };
 
@@ -854,5 +943,5 @@ const allCategories = () => {
       }
     });
   };
-</script> {% endcomment %}
+</script>  -->
 {%endblock body%}

@@ -160,7 +160,7 @@ mysql> select * from employee;
 +-------------+------------+-----------+---------+--------------+------------+
 8 rows in set (2.71 sec)
 
-mysql> create table incentive(employee_ref_id int primary key auto_increment,incentiv_date date,incentive_amount int);  
+mysql> create table incentive(employee_ref_id intprimary key auto_increment,incentiv_date date,incentive_amount int);  
 Query OK, 0 rows affected (5.43 sec)
 
 mysql> desc incentive;
