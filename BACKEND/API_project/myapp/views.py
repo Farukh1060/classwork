@@ -207,4 +207,4 @@ class updateqty(APIView):
         
 
         
-class orderAPI(APIView):
+# class orderAPI(APIView):
