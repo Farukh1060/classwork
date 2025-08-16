@@ -28,6 +28,8 @@ urlpatterns = [
 
     path("cart/quantity/<int:pk>",updateqty.as_view(),name="changeqty"),
 
+    path("payment/",payment,name="payment"),
+
     path("token/", TokenObtainPairView.as_view(),name="Token_Obtain_PairView"),
     path("token/refresh", TokenRefreshView.as_view(),name="token_refresh"),
 

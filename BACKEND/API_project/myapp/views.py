@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from rest_framework.decorators import APIView ,api_view
 from rest_framework.response import Response
 from myapp.models import *
@@ -7,6 +7,8 @@ from myapp.serializer import *
 
 from rest_framework.permissions import IsAuthenticated,BasePermission,AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
+
+import razorpay
 
 # Create your views here.
 def index(request):
@@ -205,6 +207,11 @@ class updateqty(APIView):
         except Exception as e:
             return Response({"error":str(e)})
         
-
-        
+def payment(request):
+    
+    client = razorpay.Client(auth=("rzp_test_hb96I5bWTDSL2g", "IhUR3vRN9EeSBmrcFMJad2gg"))
+    data = { "amount": 500, "currency": "INR", "receipt": "order_rcptid_11" }
+    payment = client.order.create(data=data) 
+    print(payment)
+    return JsonResponse("hi")
 # class orderAPI(APIView):
