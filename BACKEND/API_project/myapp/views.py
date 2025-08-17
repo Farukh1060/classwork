@@ -1,14 +1,14 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from rest_framework.decorators import APIView ,api_view
 from rest_framework.response import Response
-from myapp.models import *
+from myapp.models import *         
 from myapp.serializer import *
 
 from rest_framework.permissions import IsAuthenticated,BasePermission,AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-import razorpay
 
 # Create your views here.
 def index(request):
