@@ -1,4 +1,5 @@
 
+import razorpay
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from rest_framework.decorators import APIView ,api_view
@@ -12,7 +13,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # Create your views here.
 def index(request):
-    return HttpResponse("hi")
+    return render(request,'payment.html')
 
 class isStafUser(BasePermission):
     def has_permission(self, request, view):
@@ -208,10 +209,11 @@ class updateqty(APIView):
             return Response({"error":str(e)})
         
 def payment(request):
-    
-    client = razorpay.Client(auth=("rzp_test_hb96I5bWTDSL2g", "IhUR3vRN9EeSBmrcFMJad2gg"))
-    data = { "amount": 500, "currency": "INR", "receipt": "order_rcptid_11" }
+    # print(request.GET.get('amount'))
+    amount = int(request.GET.get('amount'))
+    client = razorpay.Client(auth=("rzp_test_R94o3obOUvsNOh", "WOdT0uJdOJQ4ZXGIbU1x5mTK"))
+    data = { "amount": amount*100, "currency": "INR", "receipt": "order_rcptid_11" }
     payment = client.order.create(data=data) 
-    print(payment)
-    return JsonResponse("hi")
+    # print(payment)
+    return JsonResponse(payment)
 # class orderAPI(APIView):
