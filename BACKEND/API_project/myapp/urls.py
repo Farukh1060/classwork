@@ -33,6 +33,8 @@ urlpatterns = [
     path("token/", TokenObtainPairView.as_view(),name="Token_Obtain_PairView"),
     path("token/refresh", TokenRefreshView.as_view(),name="token_refresh"),
 
+    path("order/",Order_api.as_view(),name="orderapi"),
+
 
 
 ]

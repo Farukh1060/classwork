@@ -1,4 +1,3 @@
-import razorpay
 
 import razorpay
 from django.shortcuts import render
@@ -14,7 +13,6 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # Create your views here.
 def index(request):
-    return render(request,"payment.html")
     return render(request,'payment.html')
 
 class isStafUser(BasePermission):
@@ -211,11 +209,6 @@ class updateqty(APIView):
             return Response({"error":str(e)})
         
 def payment(request):
-    print(request)
-    amount = (request.GET.get("amount"))
-    print(amount)
-    client = razorpay.Client(auth=("rzp_test_hb96I5bWTDSL2g", "IhUR3vRN9EeSBmrcFMJad2gg"))
-    data = { "amount": amount*100, "currency": "INR", "receipt": "order_rcptid_11" }
     # print(request.GET.get('amount'))
     amount = int(request.GET.get('amount'))
     client = razorpay.Client(auth=("rzp_test_R94o3obOUvsNOh", "WOdT0uJdOJQ4ZXGIbU1x5mTK"))
@@ -223,6 +216,32 @@ def payment(request):
     payment = client.order.create(data=data) 
     # print(payment)
     return JsonResponse(payment)
-    print(payment)
-    return JsonResponse(payment)
 # class orderAPI(APIView):
+
+
+class Order_api(APIView):
+    def post(self,request):
+
+        data = request.data
+
+        user = request.user
+        data["user"]=user.id
+        
+        ucart = Cart.objects.filter(user=user)
+        # print(ucart[0].product)
+        # i want to generate order for user cart item so need total price for order
+
+        total_price = sum([item.product.price *item.quantity for item in ucart])
+        data["total_price"]=total_price
+
+        # print(data)
+        # print(total_price)
+        
+        try:
+            ser = Orderserializer(data = request.data)
+            if not ser.is_valid():
+                return Response({"msg":"somthing went wrong"})
+            ser.save()
+            return Response({"data":ser.data})
+        except Exception as e:
+            return Response({"error":str(e)}) 
