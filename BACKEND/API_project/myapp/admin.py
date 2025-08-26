@@ -5,3 +5,5 @@ from myapp.models import *
 admin.site.register(Catageory)
 admin.site.register(Product)
 admin.site.register(Cart)
+admin.site.register(Order)
+admin.site.register(Oder_item)

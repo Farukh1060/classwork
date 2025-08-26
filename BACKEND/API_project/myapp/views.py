@@ -228,20 +228,44 @@ class Order_api(APIView):
         data["user"]=user.id
         
         ucart = Cart.objects.filter(user=user)
-        # print(ucart[0].product)
+        print(ucart[1].product)
         # i want to generate order for user cart item so need total price for order
 
         total_price = sum([item.product.price *item.quantity for item in ucart])
+       
         data["total_price"]=total_price
 
         # print(data)
         # print(total_price)
+      
         
         try:
             ser = Orderserializer(data = request.data)
             if not ser.is_valid():
                 return Response({"msg":"somthing went wrong"})
-            ser.save()
+            
+            order = ser.save()
+
+            for items in ucart:
+                Oder_item.objects.create(
+                    order=order,
+                    product = items.product,
+                    quantaty = items.quantity,
+                    price = items.product.price
+                )
+               
+            ucart.delete()
+
+
             return Response({"data":ser.data})
         except Exception as e:
             return Response({"error":str(e)}) 
+        
+    def get(self,request):
+        user = request.user
+        order = Order.objects.filter(user = user).prefetch_related("myorder")
+        for orders in order:
+            print(orders.myorder.all())
+
+        ser = Orderserializer(order,many=True)
+        return Response({"data":ser.data})

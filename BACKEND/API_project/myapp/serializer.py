@@ -40,11 +40,12 @@ class Cartserializer(serializers.ModelSerializer):
 class Orderserializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = "__all__"
+        fields = ["id","user","total_price","created_at","myorder"]
     def to_representation(self, instance):
       rep = super().to_representation(instance)
       print(instance)
       rep["user"] =userserializer(instance.user).data
+      rep["myorder"] =Order_itemserializer(instance.myorder.all(),many = True).data
       return rep
 
       
@@ -54,6 +55,5 @@ class Order_itemserializer(serializers.ModelSerializer):
         fields = "__all__"
     def to_representation(self, instance):
         rep = super().to_representation(instance)
-        rep["order"] = Order_itemserializer(instance.order).data
-        rep["product"] = Order_itemserializer(instance.product).data
+        rep["product"] = ProductSerializer(instance.product).data
         return rep
