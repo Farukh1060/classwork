@@ -198,11 +198,12 @@ class updateqty(APIView):
 
             product = Cart.objects.get(user=user,pk = pk)
             # print(product.quantity)
-            data["quantity"] = product.quantity + request.data.get("quantity")
+            
+            data["quantity"] = product.quantity + int(request.data.get("quantity"))
             print(request.data)
             ser = Cartserializer(product,data = request.data,partial=True)
             if not ser.is_valid():
-                return Response({"msg":"somthing went wrong"})
+                return Response({"msg":ser.errors})
             ser.save()
             return Response({"data":ser.data,"msg":"update successfully"})
         except Exception as e:
@@ -228,7 +229,7 @@ class Order_api(APIView):
         data["user"]=user.id
         
         ucart = Cart.objects.filter(user=user)
-        print(ucart[1].product)
+        # print(ucart[1].product)
         # i want to generate order for user cart item so need total price for order
 
         total_price = sum([item.product.price *item.quantity for item in ucart])
@@ -242,18 +243,18 @@ class Order_api(APIView):
         try:
             ser = Orderserializer(data = request.data)
             if not ser.is_valid():
-                return Response({"msg":"somthing went wrong"})
+                return Response({"msg":ser.errors})
             
             order = ser.save()
 
             for items in ucart:
-                Oder_item.objects.create(
+                item = OrderItem.objects.create(
                     order=order,
                     product = items.product,
                     quantaty = items.quantity,
                     price = items.product.price
                 )
-               
+                print(item)
             ucart.delete()
 
 
@@ -264,8 +265,10 @@ class Order_api(APIView):
     def get(self,request):
         user = request.user
         order = Order.objects.filter(user = user).prefetch_related("myorder")
+        print(OrderItem.objects.all())
+
         for orders in order:
             print(orders.myorder.all())
 
         ser = Orderserializer(order,many=True)
-        return Response({"data":ser.data})
+        return Response(ser.data)
