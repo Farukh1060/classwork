@@ -18,7 +18,7 @@
     />
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="static/assets/css/styles.css" />
+    <link rel="stylesheet" href="/static/assets/css/styles.css" />
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -33,14 +33,14 @@
         <a href="index.html" class="nav__logo">
           <img
             class="nav__logo-img"
-            src="static/assets/img/logo.svg"
+            src="/static/assets/img/logo.svg"
             alt="website logo"
           />
         </a>
         <div class="nav__menu" id="nav-menu">
           <div class="nav__menu-top">
             <a href="index.html" class="nav__menu-logo">
-              <img src="./static/assets/img/logo.svg" alt="" />
+              <img src="/static/assets/img/logo.svg" alt="" />
             </a>
             <div class="nav__close" id="nav-close">
               <i class="fi fi-rs-cross-small"></i>
@@ -48,33 +48,33 @@
           </div>
           <ul class="nav__list">
             <li class="nav__item">
-              {% comment %} <a href="{%url 'home'%}" class="nav__link active-link">Home</a> {% endcomment %}
+              <a href="{%url 'home'%}" class="nav__link active-link">Home</a>
             </li>
             <li class="nav__item">
-              {% comment %} <!-- <a href="{%url 'shop'%}" class="nav__link">Shop</a> --> {% endcomment %}
+              <a href="{%url 'shop'%}" class="nav__link">Shop</a>
             </li>
             <li class="nav__item">
-              {% comment %} <!-- <a href="{%url 'accounts'%}" class="nav__link">My Account</a> --> {% endcomment %}
+              <a href="{% url 'account'%}" class="nav__link">My Account</a> 
             </li>
 
             {%if user.is_authenticated%}
             <li class="nav__item">
-              {% comment %} <!-- <a href="{%url 'logout-user'%}" class="nav__link">Logout</a> --> {% endcomment %}
+              <a href="{%url 'logout_user'%}" class="nav__link">Logout</a> 
             </li>
 
             {%else%}
             <li class="nav__item">
-              {% comment %} <!-- <a href="{%url 'login-register'%}" class="nav__link">Login</a> --> {% endcomment %}
+              <a href="{%url 'login-register'%}" class="nav__link">Login</a>
             </li>
             {%endif%}
 
-            {% comment %} <!-- <li>
+             <li>
               welcome, {% if user.is_authenticated %}
               <span class="text-success">{{ user.username }}</span>
               {% else %}
               <span class="text-danger">Guest</span>
               {% endif %}
-            </li> --> {% endcomment %}
+            </li> 
           </ul>
           <div class="header__search">
             <input
@@ -83,17 +83,17 @@
               class="form__input"
             />
             <button class="search__btn">
-              <img src="static/assets/img/search.png" alt="search icon" />
+              <img src="/static/assets/img/search.png" alt="search icon" />
             </button>
           </div>
         </div>
         <div class="header__user-actions">
-          {% comment %} <a href="{%url 'cart'%}" class="header__action-btn" title="Cart"> {% endcomment %}
-            <img src="static/assets/img/icon-cart.svg" alt="" />
+          <a href="{%url 'cart'%}" class="header__action-btn" title="Cart">
+            <img src="/static/assets/img/icon-cart.svg" alt="" />
             <span class="count">3</span>
           </a>
           <div class="header__action-btn nav__toggle" id="nav-toggle">
-            <img src="./static/assets//img/menu-burger.svg" alt="" />
+            <img src="/static/assets//img/menu-burger.svg" alt="" />
           </div>
         </div>
       </nav>
@@ -106,7 +106,7 @@
         <div class="footer__content">
           <a href="index.html" class="footer__logo">
             <img
-              src="./static/assets/img/logo.svg"
+              src="/static/assets/img/logo.svg"
               alt=""
               class="footer__logo-img"
             />
@@ -126,35 +126,35 @@
             <div class="footer__links flex">
               <a href="#">
                 <img
-                  src="./static/assets/img/icon-facebook.svg"
+                  src="/static/assets/img/icon-facebook.svg"
                   alt=""
                   class="footer__social-icon"
                 />
               </a>
               <a href="#">
                 <img
-                  src="./static/assets/img/icon-twitter.svg"
+                  src="/static/assets/img/icon-twitter.svg"
                   alt=""
                   class="footer__social-icon"
                 />
               </a>
               <a href="#">
                 <img
-                  src="./static/assets/img/icon-instagram.svg"
+                  src="/static/assets/img/icon-instagram.svg"
                   alt=""
                   class="footer__social-icon"
                 />
               </a>
               <a href="#">
                 <img
-                  src="./static/assets/img/icon-pinterest.svg"
+                  src="/static/assets/img/icon-pinterest.svg"
                   alt=""
                   class="footer__social-icon"
                 />
               </a>
               <a href="#">
                 <img
-                  src="./static/assets/img/icon-youtube.svg"
+                  src="/static/assets/img/icon-youtube.svg"
                   alt=""
                   class="footer__social-icon"
                 />
@@ -187,7 +187,7 @@
         <div class="footer__content">
           <h3 class="footer__title">Secured Payed Gateways</h3>
           <img
-            src="./static/assets/img/payment-method.png"
+            src="/static/assets/img/payment-method.png"
             alt=""
             class="payment__img"
           />
@@ -203,6 +203,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!--=============== MAIN JS ===============-->
-    <script src="static/assets/js/main.js"></script>
+    <script src="/static/assets/js/main.js"></script>
   </body>
 </html>
