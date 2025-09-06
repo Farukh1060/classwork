@@ -1,8 +1,12 @@
 from django.shortcuts import render 
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
+
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+
+from myapp.models import *
 
 # Create your views here.
 
@@ -61,9 +65,23 @@ def logout_user(request):
     logout(request)
     return render(request,"login-register.html")
 
-def catageory(request):
+def category(request):
+   try:
+      allcategory = Category.objects.values()
+    #   print(allcategory)
+      return JsonResponse({"allcategory":list(allcategory)})
+   except Exception as e :
+     return JsonResponse({"error":str(e)})
    
-   return render(request,"index.html")
-
+def product(request):
+   try:
+      allproduct = Product.objects.values("Catg", "Catg_id", "Desc", "Image", "Name", "id", "price", "stock","Catg__categoryName")
+      # print(allproduct)
+      return JsonResponse({"allproduct":list(allproduct)})
+   except Exception as e :
+     return JsonResponse({"error":str(e)})
+   
+@login_required(login_url='/login_user/')
 def cart(request):
-    return render(request,"cart.html")
+    print(request)
+    return render(request,"cart.html")  

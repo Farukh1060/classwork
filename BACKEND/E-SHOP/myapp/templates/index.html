@@ -21,7 +21,7 @@
     <h3 class="section__title"><span>Popular</span> Categories</h3>
     <div class="categories__container swiper">
       <div class="swiper-wrapper" id="categories">
-
+              <!-- all will append hear -->
       </div>
 
       <div class="swiper-button-prev">
@@ -742,8 +742,105 @@
 
 <script>
   $(document).ready(function(){
-    alert("hello")
+    allcategory()
+    allproduct()
   })
+  const allcategory= () => {
+    $.get("category/",{},function(data){
+      //  console.log(data.allcategory)
+      data.allcategory.map((ele)=>{
+        //console.log(ele)
+         $("#categories").append(
+            `
+            <a href="shop.html" class="category__item swiper-slide">
+            <img
+            src="/media/${ele.categoryImage}"
+            alt="${ele.categoryImage}"
+            class="category__img"
+            />
+            <h3 class="category__title">${ele.categoryName}</h3>
+            </a>
+
+            ` 
+          )
+      })
+    })
+      
+  }
+
+
+  const allproduct = ()=>{
+        $.get("product/",{},(data)=>{
+            //console.log(data) 
+            data.allproduct.map((ele)=>{
+             //console.log(ele)
+             $("#products").append(
+            
+            `<div class="product__item">
+              <div class="product__banner">
+              <a href="details.html" class="product__images">
+                <img
+                  src="/media/${ele.Image}"
+                  alt="${ele.Image}"
+                  class="product__img default"
+                />
+                <img
+                  src="/static/assets/img/product-1-2.jpg"
+                  alt=""
+                  class="product__img hover"
+                />
+              </a>
+              <div class="product__actions">
+                <a href="#" class="action__btn" aria-label="Quick View">
+                  <i class="fi fi-rs-eye"></i>
+                </a>
+                <a href="#" class="action__btn" aria-label="Add to Wishlist">
+                  <i class="fi fi-rs-heart"></i>
+                </a>
+                <a href="#" class="action__btn" aria-label="Compare">
+                  <i class="fi fi-rs-shuffle"></i>
+                </a>
+              </div>
+              <div class="product__badge light-pink">Hot</div>
+            </div>
+            <div class="product__content">
+              <span class="product__category">${ele.Catg__categoryName}</span>
+              <a href="details.html">
+                <h3 class="product__title">${ele.Name}</h3>
+              </a>
+              <div class="product__rating">
+                <i class="fi fi-rs-star"></i>
+                <i class="fi fi-rs-star"></i>
+                <i class="fi fi-rs-star"></i>
+                <i class="fi fi-rs-star"></i>
+                <i class="fi fi-rs-star"></i>
+              </div>
+              <div class="product__price flex">
+                <span class="new__price">$${ele.price}</span>
+
+              </div>
+              <button
+
+                class="action__btn cart__btn"
+                aria-label="Add To Cart"
+                onclick='addToCart(${ele.id})'
+              >
+                <i class="fi fi-rs-shopping-bag-add"></i>
+              </button>
+            </div>
+           </div>`
+          )
+             
+            })
+   
+        })
+  }
+ const addToCart = (pid) =>{
+    $.get("cart/",{pid},(data)=>{
+      console.log(data)
+    })
+  }
+  
 
 
 
