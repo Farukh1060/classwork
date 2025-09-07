@@ -15,9 +15,13 @@ urlpatterns = [
 
     path("category/",category,name="category"),
     path("product/",product,name="product"),
+
+    path("addtocart/",addtocart,name="addtocart"),
     
     path("cart/",cart,name="cart"),
-    # path("login-register/",login_register,name="login-register"),
+    
+
+    path("login_register/",login_register,name="login_register"),
 
 
 

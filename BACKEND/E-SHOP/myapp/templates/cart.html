@@ -28,39 +28,43 @@
           </tr>
         </thead>
         <tbody>
-          {%for cart in carts%}
-          <tr>
+          
+          {%for item in allcartitem  %}
+            
+            <tr>
             <td>
               <img
-                src="media/{{cart.product.image}}"
+                src="/media/{{item.product.Image}}"
                 alt=""
                 class="table__img"
               />
             </td>
             <td>
-              <h3 class="table__title">{{cart.product.name}}</h3>
-              <p class="table__description">{{cart.product.description}}</p>
+              <h3 class="table__title">{{item.product.Name}}</h3>
+              <p class="table__description">{{item.product.description}}</p>
             </td>
             <td>
-              <span class="table__price">${{cart.product.price}}</span>
+              <span class="table__price">${{item.product.price}}</span>
             </td>
             <td>
               <input
                 type="number"
-                value="{{cart.quantity}}"
+                value="{{item.quantity}}"
                 class="quantity"
-                onchange="changeQty(value,{{cart.id}})"
+                {% comment %} onchange="changeQty(value,{{item.id}})" {% endcomment %}
               />
             </td>
-            <td><span class="subtotal">${{cart.total_price}}</span></td>
+            <td><span class="subtotal">${{item.subtotal}}</span></td>
             <td>
               <i
                 class="fi fi-rs-trash table__trash"
-                onclick="deleteCart({{cart.id}})"
+                {% comment %} onclick="deleteCart({{item.id}})" {% endcomment %}
               ></i>
             </td>
           </tr>
+          
           {%endfor%}
+
         </tbody>
       </table>
     </div>
@@ -166,8 +170,10 @@
     </div>
   </section>
 </main>
-
 <script>
+
+</script>
+<!-- <script>
   const deleteCart = (cid) => {
     $.get("deletecart", { cid }, function (rt) {
       location.reload();
@@ -182,66 +188,67 @@
 </script>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script>
 
-document.getElementById('pay').onclick = function(e){
-    e.preventDefault();
-    var amount = document.getElementById('amount').innerText;
+  document.getElementById('pay').onclick = function(e){
+      e.preventDefault();
+      var amount = document.getElementById('amount').innerText;
+      
     
-   
 
 
-    $.get("payment",{amount}, function(data) {
+      $.get("payment",{amount}, function(data) {
 
-        var options = {
-    "key": "rzp_test_oox9ZKsz6Uu09W", // Enter the Key ID generated from the Dashboard
-    "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "Tops technologies",
-    "description": "Test Transaction",
-    "image": "https://example.com/your_logo",
-    "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "handler": function (response){
-        {% comment %} alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature) {% endcomment %}
+          var options = {
+      "key": "rzp_test_oox9ZKsz6Uu09W", // Enter the Key ID generated from the Dashboard
+      "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Tops technologies",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response){
+          {% comment %} alert(response.razorpay_payment_id);
+          alert(response.razorpay_order_id);
+          alert(response.razorpay_signature) {% endcomment %}
 
-        $.get("order",{},function(rt){
-            alert(rt)
-            location.reload()
-        })
+          $.get("order",{},function(rt){
+              alert(rt)
+              location.reload()
+          })
 
-    },
-    "prefill": {
-        "name": "Gaurav Kumar",
-        "email": "gaurav.kumar@example.com",
-        "contact": "9000090000"
-    },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
-    "theme": {
-        "color": "#3399cc"
-    }
-};
-var rzp1 = new Razorpay(options);
-rzp1.on('payment.failed', function (response){
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
-});
-        rzp1.open();
+      },
+      "prefill": {
+          "name": "Gaurav Kumar",
+          "email": "gaurav.kumar@example.com",
+          "contact": "9000090000"
+      },
+      "notes": {
+          "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+          "color": "#3399cc"
+      }
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.on('payment.failed', function (response){
+          alert(response.error.code);
+          alert(response.error.description);
+          alert(response.error.source);
+          alert(response.error.step);
+          alert(response.error.reason);
+          alert(response.error.metadata.order_id);
+          alert(response.error.metadata.payment_id);
+  });
+          rzp1.open();
 
-    }).fail(function() {
-        alert("Failed to create order. Please try again.");
-    });
+      }).fail(function() {
+          alert("Failed to create order. Please try again.");
+      });
 
-   
-}
-</script>
+    
+  }
+</script> -->
 
 {% endblock body %}

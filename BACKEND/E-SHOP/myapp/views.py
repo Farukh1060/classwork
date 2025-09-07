@@ -1,4 +1,4 @@
-from django.shortcuts import render 
+from django.shortcuts import render ,redirect
 from django.http import HttpResponse,JsonResponse
 
 from django.contrib.auth.decorators import login_required
@@ -23,8 +23,7 @@ def account(request):
 def logout_user(request):
     return render(request,"login-register.html")
 
-# def login_register(request):
-#     return render(request,"login-register.html")
+
 
 
 def register_user(request):
@@ -59,7 +58,7 @@ def login_user(request):
           return render(request,"index.html")
 
        
-    return render(request,"login-register.html")
+    return render(request,"login-re`gister.html")
 
 def logout_user(request):
     logout(request)
@@ -81,7 +80,60 @@ def product(request):
    except Exception as e :
      return JsonResponse({"error":str(e)})
    
-@login_required(login_url='/login_user/')
+
+def addtocart(request):
+  try:
+  #  print("pid",request.GET.get("pid"))
+
+   pid = request.GET.get("pid")
+   user = request.user
+  #  print(user)
+
+   if user.is_anonymous:
+    return HttpResponse(user)
+   else:
+    product=Product.objects.get(pk = pid)
+    #  print(product.__dict__)
+
+    cart = Cart.objects.all()
+
+    cartitem,created = cart.get_or_create(user=user,product = product)
+    #  print(cartitrem)
+    #  print(created)
+
+    if created:
+      return HttpResponse("New cart created.")
+    else:
+       return HttpResponse("Cart already existed.")
+   
+  except Exception as e:
+     print("error",e)
+     return JsonResponse({"error":str(e)})
+     
+
+
+   
+def login_register(request):
+  return render(request,"login-register.html")
+
+
+@login_required(login_url="/login_register/")
 def cart(request):
-    print(request)
-    return render(request,"cart.html")  
+    user = request.user
+    try:
+        
+      if user.is_authenticated:
+        allcartitem = Cart.objects.filter(user=user)
+
+        # print(allcartitem[0].__dict__)
+        # print("hi")
+        # print(request.user.id)
+    
+
+        return render(request,"cart.html",{"allcartitem":allcartitem})  
+      else:
+         print('rdd')
+         return redirect("login-register.html") 
+    except Exception as e:
+       return JsonResponse({"error":str(e)})
+    

@@ -746,7 +746,7 @@
     allproduct()
   })
   const allcategory= () => {
-    $.get("category/",{},function(data){
+    $.get("/category/",{},function(data){
       //  console.log(data.allcategory)
       data.allcategory.map((ele)=>{
         //console.log(ele)
@@ -770,7 +770,7 @@
 
 
   const allproduct = ()=>{
-        $.get("product/",{},(data)=>{
+        $.get("/product/",{},(data)=>{
             //console.log(data) 
             data.allproduct.map((ele)=>{
              //console.log(ele)
@@ -835,113 +835,20 @@
    
         })
   }
+
  const addToCart = (pid) =>{
-    $.get("cart/",{pid},(data)=>{
-      console.log(data)
+    $.get("/addtocart/",{pid},(data)=>{
+      if (data !=  "AnonymousUser"){
+        alert(data)
+        location.href={% url "cart"%}
+
+      }else{
+        alert("login first to add in cart")
+        location.href={% url "login_register"%}
+      }
+      
     })
   }
   
-
-
-
-
-
-
-
-  {% comment %} $(document).ready(function () {
-    allCategories();
-    allProducts();
-  });
-
-  const allCategories = () => {
-    $.get("categories", {}, function (rt) {
-      rt.categories.forEach((category) => {
-        $("#categories").append(
-          `<a href="shop.html" class="category__item swiper-slide">
-          <img
-            src="media/${category.category_image}"
-            alt="${category.category_image}"
-            class="category__img"
-          />
-          <h3 class="category__title">${category.name}</h3>
-        </a>`
-        );
-      });
-    });
-  };
-
-  const allProducts = () => {
-    $.get("products", {}, function (rt) {
-      rt.products.forEach((product) => {
-        console.log(product);
-        $("#products").append(
-          ` <div class="product__item">
-            <div class="product__banner">
-              <a href="details.html" class="product__images">
-                <img
-                  src="media/${product.image}"
-                  alt="${product.image}"
-                  class="product__img default"
-                />
-                <img
-                  src="static/assets/img/product-1-2.jpg"
-                  alt=""
-                  class="product__img hover"
-                />
-              </a>
-              <div class="product__actions">
-                <a href="#" class="action__btn" aria-label="Quick View">
-                  <i class="fi fi-rs-eye"></i>
-                </a>
-                <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                  <i class="fi fi-rs-heart"></i>
-                </a>
-                <a href="#" class="action__btn" aria-label="Compare">
-                  <i class="fi fi-rs-shuffle"></i>
-                </a>
-              </div>
-              <div class="product__badge light-pink">Hot</div>
-            </div>
-            <div class="product__content">
-              <span class="product__category">${product.category}</span>
-              <a href="details.html">
-                <h3 class="product__title">${product.name}</h3>
-              </a>
-              <div class="product__rating">
-                <i class="fi fi-rs-star"></i>
-                <i class="fi fi-rs-star"></i>
-                <i class="fi fi-rs-star"></i>
-                <i class="fi fi-rs-star"></i>
-                <i class="fi fi-rs-star"></i>
-              </div>
-              <div class="product__price flex">
-                <span class="new__price">$${product.price}</span>
-
-              </div>
-              <button
-
-                class="action__btn cart__btn"
-                aria-label="Add To Cart"
-                onclick='addToCart(${product.id})'
-              >
-                <i class="fi fi-rs-shopping-bag-add"></i>
-              </button>
-            </div>
-          </div>`
-        );
-      });
-    });
-  };
-
-  const addToCart = (pid) => {
-    $.get("addtocart", { pid }, function (rt) {
-      if (rt == "AnonymousUser") {
-        location.href = "login-register";
-      } else {
-        alert(rt);
-      }
-    });
-  };
-   {% endcomment %}
 </script>
 {%endblock body%}
