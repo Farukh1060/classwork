@@ -126,14 +126,39 @@ def cart(request):
         allcartitem = Cart.objects.filter(user=user)
 
         # print(allcartitem[0].__dict__)
-        # print("hi")
         # print(request.user.id)
-    
-
-        return render(request,"cart.html",{"allcartitem":allcartitem})  
+        total=0
+        for item in allcartitem:
+           total += (item.product.price * item.quantity)
+        
+        return render(request,"cart.html",{"allcartitem":allcartitem,"total":total})  
       else:
-         print('rdd')
+        
          return redirect("login-register.html") 
     except Exception as e:
        return JsonResponse({"error":str(e)})
+    
+from decimal import Decimal
+def changeqty(request):
+  #  print(request.GET.get("qty"))
+  #  print(request.GET.get("cid"))
+  #  print(request.user)
+
+   qty =request.GET.get("qty")
+   cid =request.GET.get("cid")
+
+   user = request.user
+   if user.is_authenticated:
+      cart = Cart.objects.get(user=user,pk=cid)
+      # print(allcart.__dict__)
+      cart.quantity=qty
+      cart.save()
+
+      subtotal = Decimal(cart.quantity) * cart.product.price
+      # print(type(cart.quantity))
+      # print(type(cart.product.price))
+      
+      return JsonResponse({"subtotal":subtotal})
+   return HttpResponse("quantity change")
+   
     

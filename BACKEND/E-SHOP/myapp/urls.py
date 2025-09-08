@@ -19,7 +19,7 @@ urlpatterns = [
     path("addtocart/",addtocart,name="addtocart"),
     
     path("cart/",cart,name="cart"),
-    
+    path("changeqty/",changeqty,name="changeqty"),
 
     path("login_register/",login_register,name="login_register"),
 
