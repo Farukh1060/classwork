@@ -58,7 +58,7 @@
             <td>
               <i
                 class="fi fi-rs-trash table__trash"
-                {% comment %} onclick="deleteCart({{item.id}})" {% endcomment %}
+                onclick="deleteCart({{item.id}})"
               ></i>
             </td>
           </tr>
@@ -175,47 +175,37 @@
     $.get("/changeqty/",{qty,cid},(rdata)=>{
       console.log(rdata)
       $(`tr[data-cart-id="${cid}"] .subtotal`).text(`$${parseFloat(rdata.subtotal).toFixed(2)}`);
+      $(`#amount`).text(`${parseFloat(rdata.total).toFixed(2)}`);
 
-
-
-      {% comment %} $(`tr[data-cart-id="${cid}"].subtotal`).text(rdata.subtotal) {% endcomment %}
       {% comment %} location.reload() {% endcomment %}
 
-    
     })
+  }
+
+  const deleteCart = (cid)=>{
+    $.get("/delete/",{cid},(rdata)=>{
+      location.reload()
+    })
+    
   }
 
 
 </script>
-<!-- <script>
-  const deleteCart = (cid) => {
-    $.get("deletecart", { cid }, function (rt) {
-      location.reload();
-    });
-  };
-
-  const changeQty = (qty, cid) => {
-    $.get("changeqty", { qty, cid }, function (rt) {
-      location.reload();
-    });
-  };
-</script>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 
 <script>
 
   document.getElementById('pay').onclick = function(e){
       e.preventDefault();
       var amount = document.getElementById('amount').innerText;
-      
-    
+      console.log(amount)
 
-
-      $.get("payment",{amount}, function(data) {
+      $.get("/payment/",{amount}, function(data) {
 
           var options = {
-      "key": "rzp_test_oox9ZKsz6Uu09W", // Enter the Key ID generated from the Dashboard
+      "key": "rzp_test_R94o3obOUvsNOh", // Enter the Key ID generated from the Dashboard
       "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
       "name": "Tops technologies",
@@ -263,6 +253,6 @@
 
     
   }
-</script> -->
+</script> 
 
 {% endblock body %}

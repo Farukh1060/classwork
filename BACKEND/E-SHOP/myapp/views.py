@@ -149,6 +149,7 @@ def changeqty(request):
 
    user = request.user
    if user.is_authenticated:
+      allcartitem = Cart.objects.filter(user=user)
       cart = Cart.objects.get(user=user,pk=cid)
       # print(allcart.__dict__)
       cart.quantity=qty
@@ -157,8 +158,22 @@ def changeqty(request):
       subtotal = Decimal(cart.quantity) * cart.product.price
       # print(type(cart.quantity))
       # print(type(cart.product.price))
+
+      total=0
+      for item in allcartitem:
+         total += (item.product.price * item.quantity)
       
-      return JsonResponse({"subtotal":subtotal})
+      return JsonResponse({"subtotal":subtotal,"total":total})
    return HttpResponse("quantity change")
    
     
+def delete(request):
+   cid = request.GET["cid"]
+   user = request.user
+   cart = Cart.objects.get(user=user,pk=cid)
+   cart.delete()
+   return HttpResponse("cart deleted")
+
+
+def payment(request):
+   return HttpResponse("hi")
