@@ -181,11 +181,23 @@ def delete(request):
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 def payment(request):
 
-   amount = float(request.GET["amount"])
-   print(amount)
-   
+   # local order
+   mycart = Cart.objects.filter(user=request.user)
+   # print(mycart[0].__dict__)
+
+   myorder = Order.objects.create(user = request.user,total_price=0)
+   total_price = 0
+   for items in mycart:
+      total_price += items.quantity * items.product.price
+      # print(items.product)
+      OrderItem.objects.create(order = myorder,product=items.product,quantity = items.quantity,price = items.product.price)
+   myorder.total_price = total_price
+   myorder.save()   
+
+
+   # razorpay
    DATA = {
-      "amount": amount *100,
+      "amount": total_price *100,
       "currency": "INR",
       "receipt": "receipt#1",
       "notes": {
@@ -193,10 +205,10 @@ def payment(request):
          "key2": "value2"
       }
    }
-   order = client.order.create(data=DATA)
-   
-   print("pay",order["id"])
-   # save to db
+   order = client.order.create(data=DATA)  #This hits Razorpay's API to create an order on their server.
+   # print("pay",order["id"])
+   # save to ds
+
    payment = Payment.objects.create(orderId = order["id"],amount = order["amount"],status = order["status"])
 
    return JsonResponse(order)

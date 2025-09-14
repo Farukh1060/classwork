@@ -199,10 +199,10 @@
   document.getElementById('pay').onclick = function (e) {
     e.preventDefault();
 
-    var amount = document.getElementById('amount').innerText;
-    console.log("aaa", amount);
+    {% comment %} var amount = document.getElementById('amount').innerText;
+    console.log("aaa", amount); {% endcomment %}
 
-    $.get("/payment/", { amount }, function (data) {
+    $.get("/payment/", {}, function (data) {
       console.log(data);
 
       var options = {
