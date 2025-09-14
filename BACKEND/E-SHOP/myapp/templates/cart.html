@@ -194,65 +194,92 @@
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-
+ 
 <script>
+  document.getElementById('pay').onclick = function (e) {
+    e.preventDefault();
 
-  document.getElementById('pay').onclick = function(e){
-      e.preventDefault();
-      var amount = document.getElementById('amount').innerText;
-      console.log(amount)
+    var amount = document.getElementById('amount').innerText;
+    console.log("aaa", amount);
 
-      $.get("/payment/",{amount}, function(data) {
+    $.get("/payment/", { amount }, function (data) {
+      console.log(data);
 
-          var options = {
-      "key": "rzp_test_R94o3obOUvsNOh", // Enter the Key ID generated from the Dashboard
-      "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      "currency": "INR",
-      "name": "Tops technologies",
-      "description": "Test Transaction",
-      "image": "https://example.com/your_logo",
-      "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "handler": function (response){
-          {% comment %} alert(response.razorpay_payment_id);
-          alert(response.razorpay_order_id);
-          alert(response.razorpay_signature) {% endcomment %}
+      var options = {
+        "key": "rzp_test_R94o3obOUvsNOh", // Enter the Key ID generated from the Dashboard
+        "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "xyz entriprizer",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": data.id, // This is a sample Order ID. Pass the `id` obtained in the response of Step 1
 
-          $.get("order",{},function(rt){
-              alert(rt)
-              location.reload()
+        "handler": function (response) {
+          // alert(response.razorpay_payment_id);
+          // alert(response.razorpay_order_id);
+          // alert(response.razorpay_signature) 
+
+          fetch("/verify_payment/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+              "razorpay_order_id": response.razorpay_order_id,
+              "razorpay_payment_id": response.razorpay_payment_id,
+              "razorpay_signature": response.razorpay_signature
+            })
           })
+          .then(res => res.json())
+          .then(data => {
+            alert(data.status);
+          })
+          .catch(error => {
+            alert("Payment Verification Failed");
+          });
 
-      },
-      "prefill": {
+          {% comment %}
+          $.get("order", {}, function (rt) {
+            alert(rt)
+            location.reload()
+          })
+          {% endcomment %}
+        },
+
+        "prefill": {
           "name": "Gaurav Kumar",
           "email": "gaurav.kumar@example.com",
           "contact": "9000090000"
-      },
-      "notes": {
-          "address": "Razorpay Corporate Office"
-      },
-      "theme": {
-          "color": "#3399cc"
-      }
-  };
-  var rzp1 = new Razorpay(options);
-  rzp1.on('payment.failed', function (response){
-          alert(response.error.code);
-          alert(response.error.description);
-          alert(response.error.source);
-          alert(response.error.step);
-          alert(response.error.reason);
-          alert(response.error.metadata.order_id);
-          alert(response.error.metadata.payment_id);
-  });
-          rzp1.open();
+        },
 
-      }).fail(function() {
-          alert("Failed to create order. Please try again.");
+        "notes": {
+          "address": "Razorpay Corporate Office"
+        },
+
+        "theme": {
+          "color": "#3399cc"
+        }
+      };
+
+      var rzp1 = new Razorpay(options);
+
+      rzp1.on('payment.failed', function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
       });
 
-    
+      rzp1.open();
+    })
+    .fail(function () {
+      alert("Failed to create order. Please try again.");
+    });
   }
-</script> 
+</script>
+
 
 {% endblock body %}

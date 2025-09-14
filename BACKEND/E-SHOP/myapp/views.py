@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 
 from myapp.models import *
+import razorpay
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -175,5 +178,57 @@ def delete(request):
    return HttpResponse("cart deleted")
 
 
+client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 def payment(request):
-   return HttpResponse("hi")
+
+   amount = float(request.GET["amount"])
+   print(amount)
+   
+   DATA = {
+      "amount": amount *100,
+      "currency": "INR",
+      "receipt": "receipt#1",
+      "notes": {
+         "key1": "value3",
+         "key2": "value2"
+      }
+   }
+   order = client.order.create(data=DATA)
+   
+   print("pay",order["id"])
+   # save to db
+   payment = Payment.objects.create(orderId = order["id"],amount = order["amount"],status = order["status"])
+
+   return JsonResponse(order)
+
+
+
+@csrf_exempt
+def verify_payment(request):
+    if request.method == "POST":
+        data = request.POST
+        try:
+            params_dict = {
+                'razorpay_order_id': data['razorpay_order_id'],
+                'razorpay_payment_id': data['razorpay_payment_id'],
+                'razorpay_signature': data['razorpay_signature']
+            }
+
+            client.utility.verify_payment_signature(params_dict)
+            payment = Payment.objects.get(orderId =data['razorpay_order_id'] )
+            payment.paymentId = data['razorpay_payment_id']
+            payment.signature = data['razorpay_signature']
+            payment.status = "paid"
+            payment.save()
+            
+            # print("verify",payment)
+            # print(payment.__dict__)
+
+
+            return JsonResponse({'status': 'Payment Verified'})
+        except razorpay.errors.SignatureVerificationError:
+            print("fail")
+            payment = Payment.objects.get(orderId =data['razorpay_order_id'] )
+            payment.status = "Failed"
+            payment.save()
+            return JsonResponse({'status': 'Payment Failed'}, status=400)

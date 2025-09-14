@@ -25,6 +25,7 @@ urlpatterns = [
     path("login_register/",login_register,name="login_register"),
 
     path("payment/",payment,name="payment"),
+    path("verify_payment/",verify_payment,name="verify_payment"),
 
 
 

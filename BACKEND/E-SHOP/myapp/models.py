@@ -15,7 +15,7 @@ class Product(models.Model):
     Name = models.CharField(max_length=25)
     Desc = models.TextField(max_length=100)
     Image = models.ImageField(upload_to="product/",null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2,default=0)
+    price = models.FloatField()
     stock = models.PositiveIntegerField(default=0)
     Catg = models.ForeignKey(Category,on_delete=models.CASCADE)
 
@@ -26,3 +26,18 @@ class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def subtotal(self):
         return self.quantity*self.product.price
+    
+class Order(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)         
+    
+
+# store payment detail in db
+
+class Payment(models.Model):
+    orderId = models.CharField(max_length=100,unique=True)
+    paymentId = models.CharField(max_length=100,blank=True,null=True)
+    signature = models.CharField(max_length=255,blank=True,null=True)
+    amount = models.IntegerField()
+    status = models.CharField(max_length=50,default="created")
+    created_at = models.DateTimeField(auto_now_add=True)
