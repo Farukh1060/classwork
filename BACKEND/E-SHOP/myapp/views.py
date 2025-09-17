@@ -147,7 +147,7 @@ def changeqty(request):
   #  print(request.GET.get("cid"))
   #  print(request.user)
 
-   qty =request.GET.get("qty")
+   qty =int(request.GET.get("qty"))
    cid =request.GET.get("cid")
 
    user = request.user
@@ -158,9 +158,9 @@ def changeqty(request):
       cart.quantity=qty
       cart.save()
 
-      subtotal = Decimal(cart.quantity) * cart.product.price
       # print(type(cart.quantity))
       # print(type(cart.product.price))
+      subtotal = (cart.quantity) * cart.product.price
 
       total=0
       for item in allcartitem:
@@ -193,6 +193,7 @@ def payment(request):
       OrderItem.objects.create(order = myorder,product=items.product,quantity = items.quantity,price = items.product.price)
    myorder.total_price = total_price
    myorder.save()   
+   mycart.delete()
 
 
    # razorpay
@@ -210,7 +211,6 @@ def payment(request):
    # save to ds
 
    payment = Payment.objects.create(orderId = order["id"],amount = order["amount"],status = order["status"])
-
    return JsonResponse(order)
 
 

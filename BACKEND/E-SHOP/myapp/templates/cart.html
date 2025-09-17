@@ -174,10 +174,10 @@
   const changeQty = (qty,cid)=>{
     $.get("/changeqty/",{qty,cid},(rdata)=>{
       console.log(rdata)
-      $(`tr[data-cart-id="${cid}"] .subtotal`).text(`$${parseFloat(rdata.subtotal).toFixed(2)}`);
-      $(`#amount`).text(`${parseFloat(rdata.total).toFixed(2)}`);
+      {% comment %} $(`tr[data-cart-id="${cid}"] .subtotal`).text(`$${parseFloat(rdata.subtotal).toFixed(2)}`);
+      $(`#amount`).text(`${parseFloat(rdata.total).toFixed(2)}`); {% endcomment %}
 
-      {% comment %} location.reload() {% endcomment %}
+      location.reload()
 
     })
   }
