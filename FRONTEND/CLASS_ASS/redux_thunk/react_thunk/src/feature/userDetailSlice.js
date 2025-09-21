@@ -166,6 +166,6 @@ export const userDetail = createSlice({
       })
     
   },
-});
+});---
 export default userDetail.reducer;
 export const {search_data} = userDetail.actions
