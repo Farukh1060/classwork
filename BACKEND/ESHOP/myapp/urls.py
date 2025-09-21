@@ -27,6 +27,8 @@ urlpatterns = [
     path("payment/",payment,name="payment"),
     path("verify_payment/",verify_payment,name="verify_payment"),
 
+    # path("sendmail/",send_html_email,name="sendmail")
+
 
 
 

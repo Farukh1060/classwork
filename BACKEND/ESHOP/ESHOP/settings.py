@@ -146,3 +146,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 RAZORPAY_KEY_ID ="rzp_test_R94o3obOUvsNOh"
 RAZORPAY_KEY_SECRET ="WOdT0uJdOJQ4ZXGIbU1x5mTK"
+
+# email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'shaikhfarukh60@gmail.com'         # Your Gmail address
+EMAIL_HOST_PASSWORD = 'bupb sdhc hjuj qcjl'        # Use App Password, not your Gmail password

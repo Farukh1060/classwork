@@ -21,7 +21,12 @@ def shop(request):
     return render(request, "shop.html")
 
 def account(request):
-    return render(request,"accounts.html")
+    user = request.user
+    orders = Order.objects.filter(user=user)
+    print(orders)
+   #  for order in orders:
+   #    print(order.items.all())
+    return render(request,"accounts.html",{"orders":orders})
 
 def logout_user(request):
     return render(request,"login-register.html")
@@ -59,9 +64,9 @@ def login_user(request):
        if user is not None:
           login(request,user)
           return render(request,"index.html")
-
-       
-    return render(request,"login-re`gister.html")
+       else:
+         return render(request,"login-register.html",{"msg":"user not found"})
+    return render(request,"login-register.html")
 
 def logout_user(request):
     logout(request)
@@ -236,6 +241,42 @@ def verify_payment(request):
             # print("verify",payment)
             # print(payment.__dict__)
 
+            user = request.user
+            orders = Order.objects.filter(user=user)
+            
+            subject = 'Welcome!'
+            from_email = settings.EMAIL_HOST_USER
+            to = ['shaikhfarukh60@gmail.com']
+            
+            text_content = 'Welcome to our site!'
+            # Start HTML
+            html = f"<h2>Hello, {user.username}</h2>"
+
+            for order in orders:
+               html += f"<h4>Order ID: {order.id}</h4>"
+               html += f"<p>Date: {order.created_at.strftime('%d %b %Y')}</p>"
+               html += f"<p>Total: ${order.total_price}</p>"
+
+               html += "<table border='1' cellpadding='5' cellspacing='0'>"
+               html += "<tr><th>Product</th><th>Qty</th><th>Price</th><th>Subtotal</th></tr>"
+
+               for item in order.items.all():
+                     subtotal = item.price * item.quantity
+                     html += f"""
+                        <tr>
+                           <td>{item.product.Name}</td>
+                           <td>{item.quantity}</td>
+                           <td>${item.price:.2f}</td>
+                           <td>${subtotal:.2f}</td>
+                        </tr>
+                     """
+
+               html += "</table><br>"
+
+            msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+            msg.attach_alternative(html, "text/html")
+            msg.send()
+
 
             return JsonResponse({'status': 'Payment Verified'})
         except razorpay.errors.SignatureVerificationError:
@@ -244,3 +285,52 @@ def verify_payment(request):
             payment.status = "Failed"
             payment.save()
             return JsonResponse({'status': 'Payment Failed'}, status=400)
+        
+def order(request):
+   print(request.user)
+   # order = OrderItem.objects.filter(request.user)
+   # print(order)
+   return HttpResponse("hi")
+
+
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+
+# def send_html_email(request):
+    
+#     user = request.user
+#     orders = Order.objects.filter(user=user)
+    
+#     subject = 'Welcome!'
+#     from_email = settings.EMAIL_HOST_USER
+#     to = ['shaikhfarukh60@gmail.com']
+    
+#     text_content = 'Welcome to our site!'
+#      # Start HTML
+#     html = f"<h2>Hello, {user.username}</h2>"
+
+#     for order in orders:
+#         html += f"<h4>Order ID: {order.id}</h4>"
+#         html += f"<p>Date: {order.created_at.strftime('%d %b %Y')}</p>"
+#         html += f"<p>Total: ${order.total_price}</p>"
+
+#         html += "<table border='1' cellpadding='5' cellspacing='0'>"
+#         html += "<tr><th>Product</th><th>Qty</th><th>Price</th><th>Subtotal</th></tr>"
+
+#         for item in order.items.all():
+#             subtotal = item.price * item.quantity
+#             html += f"""
+#                 <tr>
+#                     <td>{item.product.Name}</td>
+#                     <td>{item.quantity}</td>
+#                     <td>${item.price:.2f}</td>
+#                     <td>${subtotal:.2f}</td>
+#                 </tr>
+#             """
+
+#         html += "</table><br>"
+
+#     msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+#     msg.attach_alternative(html, "text/html")
+#     msg.send()
+#     return render(request,"index.html") 

@@ -47,6 +47,7 @@
           <h3 class="tab__header">Your Orders</h3>
           <div class="tab__body">
             {% for order in orders%}
+            
             <table class="placed__order-table">
               <tbody>
                 <tr>
@@ -71,11 +72,11 @@
                 </tr>
                 {% for item in order.items.all %}
                 <tr>
-                  <td>{{ item.product.name }}</td>
+                  <td>{{ item.product.Name }}</td>
                   <td>
                     <img
-                      src="{{ item.product.image.url }}"
-                      alt="{{ item.product.name }}"
+                      src="{{ item.product.Image.url}}"
+                      alt="{{ item.product.Name}}"
                       class="placed__order-img"
                       height="50"
                       width="50"
@@ -83,7 +84,7 @@
                   </td>
                   <td>{{ item.quantity }}</td>
                   <td>${{ item.product.price }}</td>
-                  <td>${{ item.total_price }}</td>
+                  <td>${{ item.subtotal}}</td>
                 </tr>
                 {% endfor %}
               </tbody>

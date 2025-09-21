@@ -18,6 +18,8 @@ class Product(models.Model):
     price = models.FloatField()
     stock = models.PositiveIntegerField(default=0)
     Catg = models.ForeignKey(Category,on_delete=models.CASCADE)
+
+    
     def __str__(self):
         return self.Name
 
@@ -39,10 +41,12 @@ class Order(models.Model):
     
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order,on_delete=models.CASCADE)
+    order = models.ForeignKey(Order,on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     price = models.FloatField()
+    def subtotal(self):
+        return self.quantity*self.product.price
 
          
     
