@@ -14,6 +14,9 @@ urlpatterns = [
     path("logout_user/",logout_user,name="logout_user"),
 
     path("category/",category,name="category"),
+
+
+    path("productbycatg/",productbycatg,name="productbycatg"),
     path("product/",product,name="product"),
 
     path("addtocart/",addtocart,name="addtocart"),

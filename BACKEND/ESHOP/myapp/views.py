@@ -11,6 +11,8 @@ import razorpay
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
+from django.core.mail import EmailMultiAlternatives
+
 # Create your views here.
 
 def home(request):
@@ -68,18 +70,33 @@ def login_user(request):
          return render(request,"login-register.html",{"msg":"user not found"})
     return render(request,"login-register.html")
 
+
 def logout_user(request):
     logout(request)
     return render(request,"login-register.html")
 
+
 def category(request):
    try:
       allcategory = Category.objects.values()
-    #   print(allcategory)
+      # print(allcategory)
       return JsonResponse({"allcategory":list(allcategory)})
    except Exception as e :
      return JsonResponse({"error":str(e)})
    
+
+def productbycatg(request):
+   cid = request.GET["cid"]
+   print(cid)
+   try:
+      productbycate = Product.objects.filter(Catg_id=cid).values()
+
+      # print(productbycate)
+      # print("hiiiiiiiiiii",id)
+      return JsonResponse({"productbycate":list(productbycate)})  
+   except Exception as e :
+      return JsonResponse({"error":str(e)})
+
 def product(request):
    try:
       allproduct = Product.objects.values("Catg", "Catg_id", "Desc", "Image", "Name", "id", "price", "stock","Catg__categoryName")
@@ -244,7 +261,7 @@ def verify_payment(request):
             user = request.user
             orders = Order.objects.filter(user=user)
             
-            subject = 'Welcome!'
+            subject = 'order place succefully'
             from_email = settings.EMAIL_HOST_USER
             to = ['shaikhfarukh60@gmail.com']
             
@@ -286,15 +303,14 @@ def verify_payment(request):
             payment.save()
             return JsonResponse({'status': 'Payment Failed'}, status=400)
         
-def order(request):
-   print(request.user)
-   # order = OrderItem.objects.filter(request.user)
-   # print(order)
-   return HttpResponse("hi")
+# def order(request):
+#    print(request.user)
+#    # order = OrderItem.objects.filter(request.user)
+#    # print(order)
+#    return HttpResponse("hi")
 
 
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
+
 
 # def send_html_email(request):
     
