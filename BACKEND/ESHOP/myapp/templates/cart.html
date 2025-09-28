@@ -233,17 +233,13 @@
           .then(res => res.json())
           .then(data => {
             alert(data.status);
+            i want to send mail
           })
           .catch(error => {
             alert("Payment Verification Failed");
           });
 
-          {% comment %}
-          $.get("order", {}, function (rt) {
-            alert(rt)
-            location.reload()
-          })
-          {% endcomment %}
+         
         },
 
         "prefill": {
@@ -274,6 +270,7 @@
       });
 
       rzp1.open();
+
     })
     .fail(function () {
       alert("Failed to create order. Please try again.");
