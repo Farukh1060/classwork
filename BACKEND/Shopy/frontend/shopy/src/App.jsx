@@ -3,6 +3,9 @@ import Navbar from './components/Navbar'
 import MenuBar from './components/MenuBar'
 import ImageSlider from './components/ImageSlider'
 import Product from './components/Product'
+import BestProduct from './components/BestProduct'
+import TestimonialSlider from './components/TestimonialSlider'
+import Footer from './components/Footer'
 
 const App = () => {
   
@@ -15,6 +18,9 @@ const App = () => {
 
     </div>
     <Product></Product>
+    <BestProduct></BestProduct>
+    <TestimonialSlider></TestimonialSlider>
+    <Footer></Footer>
     
     </div>
   )
