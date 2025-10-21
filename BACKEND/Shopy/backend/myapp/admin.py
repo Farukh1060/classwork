@@ -3,3 +3,4 @@ from myapp.models import *
 
 # Register your models here.
 admin.site.register(Catageory)
+admin.site.register(Product)

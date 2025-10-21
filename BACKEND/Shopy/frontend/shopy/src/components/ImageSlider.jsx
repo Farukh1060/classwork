@@ -38,7 +38,7 @@ const ImageSlider = () => {
                <div className="max-w-sm mx-auto p-6 rounded-lg ">
                 <h2 className="text-5xl font-bold mb-2 text-gray-800">30% off on all women wear</h2>
                 <p className="text-gray-600 mb-4"> This is a short description of the awesome product you're about to order.</p>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Order Now</button>
+                <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition">Order Now</button>
                </div>
             </div>
             <div>

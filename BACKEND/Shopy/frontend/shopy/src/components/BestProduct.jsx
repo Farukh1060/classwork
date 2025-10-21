@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import shirt from '../assets/shirt.png'
 import shirt2 from '../assets/shirt2.png'
 import shirt3 from '../assets/shirt3.png'
 
 const BestProduct = () => {
+
+  
+  
 
   const BestProduct = [
   {
@@ -46,8 +49,8 @@ const BestProduct = () => {
               <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
               <p className="text-gray-600 text-sm mt-1">{product.description}</p>
               <div className="mt-3 flex items-center justify-between">
-                <span className="text-xl font-bold text-blue-600">${product.price}</span>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                <span className="text-xl font-bold text-gray-800">${product.price}</span>
+                <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-500 transition">
                   Add to Cart
                 </button>
               </div>

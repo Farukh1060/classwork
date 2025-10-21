@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import Contact from './components/Contact'
 import AllProducts from './components/AllProducts'
 import { Outlet } from 'react-router-dom'
+import Button from './components/Button'
 
 const App = () => {
   
@@ -18,6 +19,7 @@ const App = () => {
       <Navbar ></Navbar>
       <MenuBar></MenuBar>
       <ImageSlider></ImageSlider>
+      
       
       <Outlet></Outlet>
 

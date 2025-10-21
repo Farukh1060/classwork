@@ -30,10 +30,10 @@ const Navbar = () => {
               placeholder="Search..."
               className="px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
-            <button className="bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 transition">
+            <button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition">
               Login
             </button>
-            <Link to={"/cart"} className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            <Link to={"/cart"} className="w-full bg-orange-400  text-white px-4 py-2 rounded-full hover:bg-orange-300 transition">
             cart
           </Link>
           </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -9,48 +9,60 @@ import women3 from '../assets/women3.jpg';
 import { Link } from 'react-router-dom';
 
 const Product = () => {
+
+  const[products,setproducts] = useState([])
+  useEffect(()=>{
+      fetch("http://127.0.0.1:8000/product/").then((resp)=>{
+        return resp.json()
+      }).then((result)=>{
+        setproducts(result.data)
+        
+      })
+  },[])
+
+  // console.log(products[0]);
   // our product slider
-  const products = [
-    {
-      id: 1,
-      name: 'Wireless Headphones',
-      price: 99.99,
-      description: 'High-quality wireless headphones with noise cancellation.',
-      image: women1,
-    },
-    {
-      id: 2,
-      name: 'Smartwatch',
-      price: 149.99,
-      description: 'Smartwatch with fitness tracking and notifications.',
-      image: women2,
-    },
-    {
-      id: 3,
-      name: 'Bluetooth Speaker',
-      price: 59.99,
-      description: 'Portable Bluetooth speaker with rich sound.',
-      image: women3,
-    },
-    {
-      id: 4,
-      name: 'Smartwatch',
-      price: 149.99,
-      description: 'Smartwatch with fitness tracking and notifications.',
-      image: women2,
-    },
-    {
-      id: 5,
-      name: 'Wireless Headphones',
-      price: 99.99,
-      description: 'High-quality wireless headphones with noise cancellation.',
-      image: women1,
-    },
-  ];
+  // const products = [
+  //   {
+  //     id: 1,
+  //     name: 'Wireless Headphones',
+  //     price: 99.99,
+  //     description: 'High-quality wireless headphones with noise cancellation.',
+  //     image: women1,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Smartwatch',
+  //     price: 149.99,
+  //     description: 'Smartwatch with fitness tracking and notifications.',
+  //     image: women2,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Bluetooth Speaker',
+  //     price: 59.99,
+  //     description: 'Portable Bluetooth speaker with rich sound.',
+  //     image: women3,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Smartwatch',
+  //     price: 149.99,
+  //     description: 'Smartwatch with fitness tracking and notifications.',
+  //     image: women2,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'Wireless Headphones',
+  //     price: 99.99,
+  //     description: 'High-quality wireless headphones with noise cancellation.',
+  //     image: women1,
+  //   },
+  // ];
 
   // Slider settings
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 600,
     slidesToShow: 4,
@@ -87,16 +99,17 @@ const Product = () => {
           <div key={product.id} className="px-3">
             <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
               <img
-                src={product.image}
+                src={`http://127.0.0.1:8000${product.image}`} 
                 alt={product.name}
-                className="w-full h-48 object-cover object-top"
+                className="w-full h-48 object-cover "
               />
               <div className="p-4">
                 <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
+                <p className=" text-gray-800 text-sm mt-1">catg :{product.catageory.name}</p>
                 <p className="text-gray-600 text-sm mt-1">{product.description}</p>
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-xl font-bold text-blue-600">${product.price}</span>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                  <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition">
                     Add to Cart
                   </button>
                 </div>
@@ -106,7 +119,7 @@ const Product = () => {
         ))}
       </Slider>
       <div className='flex justify-center mt-14'>
-      <Link to={"/allproduct"} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"> View All Product </Link>
+      <Link to={"/allproduct"} className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition"> View All Product </Link>
 
       </div>
     </div>
