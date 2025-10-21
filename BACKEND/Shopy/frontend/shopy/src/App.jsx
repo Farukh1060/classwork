@@ -6,22 +6,24 @@ import Product from './components/Product'
 import BestProduct from './components/BestProduct'
 import TestimonialSlider from './components/TestimonialSlider'
 import Footer from './components/Footer'
+import Contact from './components/Contact'
+import AllProducts from './components/AllProducts'
+import { Outlet } from 'react-router-dom'
 
 const App = () => {
   
   return (
-    <div className='relative overflow-hidden'>
-    <Navbar></Navbar>
-    <div className='flex flex-col sm:flex-row md:block'>
-    <MenuBar></MenuBar>
-    <ImageSlider></ImageSlider>
+    <div className=''>
 
-    </div>
-    <Product></Product>
-    <BestProduct></BestProduct>
-    <TestimonialSlider></TestimonialSlider>
-    <Footer></Footer>
-    
+      <Navbar ></Navbar>
+      <MenuBar></MenuBar>
+      <ImageSlider></ImageSlider>
+      
+      <Outlet></Outlet>
+
+      <BestProduct></BestProduct>
+      <TestimonialSlider></TestimonialSlider>
+      <Footer></Footer>
     </div>
   )
 }

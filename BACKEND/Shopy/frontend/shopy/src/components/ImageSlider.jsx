@@ -26,7 +26,7 @@ const ImageSlider = () => {
     
   };
 
-  return (<>
+  return (<div className='relative overflow-hidden'>
     <div className=' md:h-[550px] md:max-h-full  sm:aspect-square bg-orange-200 rotate-45 absolute  md:-top-[120px] right-[40px] rounded-2xl z-[-2] overflow-hidden '></div>
     <div className='max-w-7xl mx-auto px-4 w-full lg:px-8'> 
       <Slider {...settings} >
@@ -51,7 +51,7 @@ const ImageSlider = () => {
       ))}
     </Slider>
     </div>
-   </> 
+   </div> 
   );
 };
 

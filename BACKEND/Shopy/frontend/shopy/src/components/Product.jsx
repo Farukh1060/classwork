@@ -6,8 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 import women1 from '../assets/women1.png';
 import women2 from '../assets/women2.jpg';
 import women3 from '../assets/women3.jpg';
+import { Link } from 'react-router-dom';
 
 const Product = () => {
+  // our product slider
   const products = [
     {
       id: 1,
@@ -103,6 +105,10 @@ const Product = () => {
           </div>
         ))}
       </Slider>
+      <div className='flex justify-center mt-14'>
+      <Link to={"/allproduct"} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"> View All Product </Link>
+
+      </div>
     </div>
   );
 };
