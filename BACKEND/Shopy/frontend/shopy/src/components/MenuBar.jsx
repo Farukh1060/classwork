@@ -19,7 +19,7 @@ const MenuBar = () => {
 
 
 return (
-    <div className="bg-white shadow px-4 py-4 sticky top-[60px] z-50">
+    <div className="bg-white shadow px-4 py-4 sticky top-[60px] z-10">
       
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-center md:space-x-7 space-y-3 md:space-y-0">

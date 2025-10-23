@@ -13,7 +13,8 @@ const ProductCard = ({ product }) => {
         <h3 className="text-lg font-semibold">{product.name}</h3>
         <h3 className="text-gray-600">catg : {product.catageory.name}</h3>
         <p className="text-gray-600">${product.price}</p>
-        <Link to={`/productDetail/${product.id}`} state={{product:product}} className="inline-block mt-3 bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-500 transition ">view details</Link>
+        <Link to={`/productDetail/${product.id}`} state={{product:product ,quantity:1}} className="inline-block mt-3 bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-500 transition ">view details</Link>
+        
       </div>
     </div>
   );

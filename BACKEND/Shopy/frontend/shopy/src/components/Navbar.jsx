@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png'
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [showPopuplogin, setShowPopuplogin] = useState(false);
+  dispatch = useDispatch()
+  
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    username = e.target.value
+
+    dispatch(userRegister())
+    // handle register logic here
+    alert("User registered!");
+    setShowPopup(false);
+  };
 
   return (
-    <nav className="bg-orange-100 sticky top-0 z-50">
+    <nav className="bg-orange-100 sticky top-0 z-30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
@@ -30,9 +44,97 @@ const Navbar = () => {
               placeholder="Search..."
               className="px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
-            <button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition">
+            <button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition"  onClick={() => setShowPopuplogin(true)}>
               Login
             </button>
+            {showPopuplogin && (
+              <div className=" absolute top-[70px] right-0 bg-opacity-80  z-100">
+                <div className="bg-white rounded-xl shadow-lg p-6 w-80 relative">
+                  <h2 className="text-xl font-semibold mb-4 text-center">User LogIn</h2>
+
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+                   
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      autoComplete='false'
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+
+                    <div className="flex justify-between mt-4">
+                      <button
+                        type="button"
+                        className="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400"
+                        onClick={() => setShowPopuplogin(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className="bg-orange-400 text-white px-4 py-1.5 rounded hover:bg-orange-300"
+                      >
+                        LogIn
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+            <button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition"  onClick={() => setShowPopup(true)}>
+              SignUp
+            </button>
+            {showPopup && (
+              <div className=" absolute top-[70px] right-0 bg-opacity-80  z-100">
+                <div className="bg-white rounded-xl shadow-lg p-6 w-80 relative">
+                  <h2 className="text-xl font-semibold mb-4 text-center">User Register</h2>
+
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      autoComplete='false'
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+
+                    <div className="flex justify-between mt-4">
+                      <button
+                        type="button"
+                        className="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400"
+                        onClick={() => setShowPopup(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className="bg-orange-400 text-white px-4 py-1.5 rounded hover:bg-orange-300"
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
             <Link to={"/cart"} className="w-full bg-orange-400  text-white px-4 py-2 rounded-full hover:bg-orange-300 transition">
             cart
           </Link>
@@ -79,9 +181,95 @@ const Navbar = () => {
             placeholder="Search..."
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
-          <button className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+          <button className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onClick={() => setShowPopuplogin(true)}>
             Login
           </button>
+            {showPopuplogin && (
+              <div className=" absolute top-[70px] right-0 bg-opacity-80  z-100">
+                <div className="bg-white rounded-xl shadow-lg p-6 w-80 relative">
+                  <h2 className="text-xl font-semibold mb-4 text-center">User LogIn</h2>
+
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+                    
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+
+                    <div className="flex justify-between mt-4">
+                      <button
+                        type="button"
+                        className="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400"
+                        onClick={() => setShowPopup(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className="bg-orange-400 text-white px-4 py-1.5 rounded hover:bg-orange-300"
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+          <button className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"  onClick={() => setShowPopup(true)}>
+            SignUp
+          </button>
+          {showPopup && (
+              <div className=" absolute top-[70px] right-0 bg-opacity-80  z-100">
+                <div className="bg-white rounded-xl shadow-lg p-6 w-80 relative">
+                  <h2 className="text-xl font-semibold mb-4 text-center">User Register</h2>
+
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      className="w-full border px-3 py-2 rounded"
+                      required
+                    />
+
+                    <div className="flex justify-between mt-4">
+                      <button
+                        type="button"
+                        className="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400"
+                        onClick={() => setShowPopup(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className="bg-orange-400 text-white px-4 py-1.5 rounded hover:bg-orange-300"
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
           <button className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
             cart
           </button>

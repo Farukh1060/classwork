@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import {useDispatch, useSelector} from "react-redux"
+
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -7,17 +9,31 @@ import women1 from '../assets/women1.png';
 import women2 from '../assets/women2.jpg';
 import women3 from '../assets/women3.jpg';
 import { Link } from 'react-router-dom';
+import { featchproduct } from '../features/product/ProductSlice';
+import { featchPostCart } from '../features/Cart/CartSlice';
+
 
 const Product = () => {
+  
 
-  const[products,setproducts] = useState([])
+  // const[products,setproducts] = useState([])
+  const dispatch = useDispatch()
+  const {items,loading,error} = useSelector((state)=>{return state.product})
+
+  
+  
+
   useEffect(()=>{
-      fetch("http://127.0.0.1:8000/product/").then((resp)=>{
-        return resp.json()
-      }).then((result)=>{
-        setproducts(result.data)
+
+    dispatch(featchproduct())
+
+
+      // fetch("http://127.0.0.1:8000/product/").then((resp)=>{
+      //   return resp.json()
+      // }).then((result)=>{
+      //   setproducts(result.data)
         
-      })
+      // })
   },[])
 
   // console.log(products[0]);
@@ -90,12 +106,14 @@ const Product = () => {
       },
     ],
   };
-
+if(loading){
+  return <h1>loading</h1>
+}
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Our Products</h1>
       <Slider {...settings}>
-        {products.map((product) => (
+        {items.data && items.data.map((product) => (
           <div key={product.id} className="px-3">
             <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
               <img
@@ -109,7 +127,7 @@ const Product = () => {
                 <p className="text-gray-600 text-sm mt-1">{product.description}</p>
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-xl font-bold text-blue-600">${product.price}</span>
-                  <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition">
+                  <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition" onClick={()=>{dispatch( featchPostCart(product.id))}}>
                     Add to Cart
                   </button>
                 </div>

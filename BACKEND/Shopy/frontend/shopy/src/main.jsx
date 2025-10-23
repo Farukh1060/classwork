@@ -9,6 +9,9 @@ import AllProducts from './components/AllProducts.jsx'
 import ProductDetail from './components/ProductDetail.jsx'
 import CartPage from './components/CartPage.jsx'
 
+import { Provider } from 'react-redux';
+import { store } from './app/store.js'; 
+
  const router =  createBrowserRouter([
     {path:"/",element:<App></App>,children:[
       {path:"/",element:<Product></Product>},
@@ -21,8 +24,9 @@ import CartPage from './components/CartPage.jsx'
   ])
 
 createRoot(document.getElementById('root')).render(
-  
-  <RouterProvider router={router}></RouterProvider>
-  
+  <Provider store={store}>
+    <RouterProvider router={router}>
+    </RouterProvider>
+  </Provider>
   
 )
