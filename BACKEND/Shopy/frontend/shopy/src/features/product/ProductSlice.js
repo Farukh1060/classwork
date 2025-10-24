@@ -6,16 +6,13 @@ export const featchproduct = createAsyncThunk("featchproduct",async (_,{rejectWi
 
     try{
         const result = await response.json()
-        // console.log(result);
-        
         return result
 
-    }catch{
+    }catch(error){
         return rejectWithValue(error)
     }
 
 })
-
 
 const ProductsSlice = createSlice({
     name:"product",
@@ -37,7 +34,7 @@ const ProductsSlice = createSlice({
         })
         .addCase(featchproduct.rejected,(state,action)=>{
             state.loading=false
-            state.error =action.payload || console.log(state.error);
+            state.error =action.payload;
             
         })
     }

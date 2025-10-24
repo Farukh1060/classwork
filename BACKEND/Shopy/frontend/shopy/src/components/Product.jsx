@@ -15,66 +15,12 @@ import { featchPostCart } from '../features/Cart/CartSlice';
 
 const Product = () => {
   
-
-  // const[products,setproducts] = useState([])
   const dispatch = useDispatch()
   const {items,loading,error} = useSelector((state)=>{return state.product})
 
-  
-  
-
   useEffect(()=>{
-
     dispatch(featchproduct())
-
-
-      // fetch("http://127.0.0.1:8000/product/").then((resp)=>{
-      //   return resp.json()
-      // }).then((result)=>{
-      //   setproducts(result.data)
-        
-      // })
   },[])
-
-  // console.log(products[0]);
-  // our product slider
-  // const products = [
-  //   {
-  //     id: 1,
-  //     name: 'Wireless Headphones',
-  //     price: 99.99,
-  //     description: 'High-quality wireless headphones with noise cancellation.',
-  //     image: women1,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Smartwatch',
-  //     price: 149.99,
-  //     description: 'Smartwatch with fitness tracking and notifications.',
-  //     image: women2,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Bluetooth Speaker',
-  //     price: 59.99,
-  //     description: 'Portable Bluetooth speaker with rich sound.',
-  //     image: women3,
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Smartwatch',
-  //     price: 149.99,
-  //     description: 'Smartwatch with fitness tracking and notifications.',
-  //     image: women2,
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'Wireless Headphones',
-  //     price: 99.99,
-  //     description: 'High-quality wireless headphones with noise cancellation.',
-  //     image: women1,
-  //   },
-  // ];
 
   // Slider settings
   const settings = {
@@ -109,7 +55,7 @@ const Product = () => {
 if(loading){
   return <h1>loading</h1>
 }
-  return (
+return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Our Products</h1>
       <Slider {...settings}>
@@ -127,7 +73,7 @@ if(loading){
                 <p className="text-gray-600 text-sm mt-1">{product.description}</p>
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-xl font-bold text-blue-600">${product.price}</span>
-                  <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition" onClick={()=>{dispatch( featchPostCart(product.id))}}>
+                  <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition" onClick={()=>{dispatch(featchPostCart(product.id))}}>
                     Add to Cart
                   </button>
                 </div>

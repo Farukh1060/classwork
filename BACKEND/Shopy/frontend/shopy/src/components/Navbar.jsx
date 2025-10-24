@@ -1,21 +1,41 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png'
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
+import { LogInUser, LogOutUser, UserRegister } from '../features/user/UserSlice';
 
 const Navbar = () => {
+  
+  const dispatch = useDispatch()
+
+
   const [isOpen, setIsOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [showPopuplogin, setShowPopuplogin] = useState(false);
-  dispatch = useDispatch()
+  const [user,setuser]=useState({})
   
-   const handleSubmit = (e) => {
+  const {userdetail} = useSelector((state)=>{return state.user})
+  console.log(userdetail.user);
+  
+  
+  const getuserdata = (e)=>{
+    setuser({...user,[e.target.name]:e.target.value})
+    
+  }
+  
+  const handleSubmit = (e) => {
     e.preventDefault();
-    username = e.target.value
+   
 
-    dispatch(userRegister())
-    // handle register logic here
-    alert("User registered!");
+    dispatch(UserRegister(user))
+    setShowPopup(false);
+  };
+
+  const handleSubmitlogin = (e) => {
+    e.preventDefault();
+   
+
+    dispatch(LogInUser(user))
     setShowPopup(false);
   };
 
@@ -44,18 +64,23 @@ const Navbar = () => {
               placeholder="Search..."
               className="px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
-            <button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition"  onClick={() => setShowPopuplogin(true)}>
-              Login
-            </button>
+            {userdetail.user? <button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition" onClick={()=>dispatch(LogOutUser())}>
+              LogOut
+            </button>:<button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition"  onClick={() => setShowPopuplogin(true)}>
+              LogIn
+            </button>}
+            
             {showPopuplogin && (
               <div className=" absolute top-[70px] right-0 bg-opacity-80  z-100">
                 <div className="bg-white rounded-xl shadow-lg p-6 w-80 relative">
                   <h2 className="text-xl font-semibold mb-4 text-center">User LogIn</h2>
 
-                  <form onSubmit={handleSubmit} className="space-y-3">
+                  <form onSubmit={handleSubmitlogin} className="space-y-3">
                     <input
                       type="text"
                       placeholder="Username"
+                      name='username'
+                      onChange={getuserdata}
                       className="w-full border px-3 py-2 rounded"
                       required
                     />
@@ -63,6 +88,8 @@ const Navbar = () => {
                     <input
                       type="password"
                       placeholder="Password"
+                      name='password'
+                      onChange={getuserdata}
                       autoComplete='false'
                       className="w-full border px-3 py-2 rounded"
                       required
@@ -98,19 +125,25 @@ const Navbar = () => {
                   <form onSubmit={handleSubmit} className="space-y-3">
                     <input
                       type="text"
+                      name='username'
                       placeholder="Username"
                       className="w-full border px-3 py-2 rounded"
+                      onChange={getuserdata}
                       required
                     />
                     <input
                       type="email"
                       placeholder="Email"
+                      name='email'
+                      onChange={getuserdata}
                       className="w-full border px-3 py-2 rounded"
                       required
                     />
                     <input
                       type="password"
                       placeholder="Password"
+                      name='password'
+                      onChange={getuserdata}
                       autoComplete='false'
                       className="w-full border px-3 py-2 rounded"
                       required
@@ -135,9 +168,11 @@ const Navbar = () => {
                 </div>
               </div>
             )}
-            <Link to={"/cart"} className="w-full bg-orange-400  text-white px-4 py-2 rounded-full hover:bg-orange-300 transition">
+            <Link to={"/cart"} className=" bg-orange-400  text-white px-4 py-2 rounded-full hover:bg-orange-300 transition">
             cart
           </Link>
+          <p>{userdetail.user? `welcome ${userdetail.user}`:'welcome guest'}</p>
+
           </div>
 
           

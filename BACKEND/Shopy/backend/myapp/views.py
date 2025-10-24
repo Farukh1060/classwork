@@ -1,18 +1,68 @@
 from django.shortcuts import render,HttpResponse
 from rest_framework.response import Response
-from rest_framework.decorators import APIView
+from rest_framework.decorators import APIView,api_view
 from myapp.models import *
 from myapp.serializer import *
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status 
+from django.http import JsonResponse
+
+from django.contrib.auth import authenticate,login,logout
+
 
 # Create your views here.
 def index(request):
     return HttpResponse("hii")
+ 
+@api_view(["POST"])
+def UserRegisterApi(request):
+
+   try:
+     if request.method == "POST":
+        # print(request.POST)
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+
+        checkuser = User.objects.filter(username =username).exists()
+        if checkuser:
+            return JsonResponse({"msg":"user already exist"})
+        
+        if username and email and password:
+          user =  User.objects.create_user(username=username,email=email,password=password)
+          user.save()
+          return JsonResponse({"msg":"user register successfully"}) 
+     
+     
+     return JsonResponse({"msg":"all feild is require"})
+   
+   except Exception as e:
+    return JsonResponse({"msg":str(e)})
+   
+@api_view(["POST"])  
+def LogInUser(request):
+     
+     if request.method == "POST":
+       print(request.POST)
+       username = request.POST.get("username")
+       password = request.POST.get("password")
+       user = authenticate(request,username=username,password=password)
+
+       if user is not None:
+          login(request,user)
+          return JsonResponse({"msg":"login succfully","user":username})
+       else:
+         return JsonResponse({"msg":"user not found"})
+     return JsonResponse({"msh":"only post accept"})
+
+def LogOutUser(request):
+#    print(request.data)
+   logout(request)
+   return JsonResponse({"msg":"logout succefully"})
 
 
 class CategoryApi(APIView):
-
  
-    
     def get(self,request,pk=0):
         if pk==0:
             allcategory = Catageory.objects.all()
