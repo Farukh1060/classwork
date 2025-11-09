@@ -52,9 +52,9 @@ const Product = () => {
       },
     ],
   };
-if(loading){
-  return <h1>loading</h1>
-}
+// if(loading){
+//   return <h1>loading</h1>
+// }
 return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Our Products</h1>

@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../assets/logo.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
-import { LogInUser, LogOutUser, UserRegister } from '../features/user/UserSlice';
+import { LogInUser, LogOutUser, TockenJWT, UserRegister } from '../features/user/UserSlice';
 
-const Navbar = () => {
-  
+const Navbar = () => { 
   const dispatch = useDispatch()
+  useEffect(()=>{
+    const tocken = localStorage.getItem("access")
+    if(tocken){
 
+      dispatch(LogInUser())
+    }
+  },[])
 
   const [isOpen, setIsOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -15,7 +20,7 @@ const Navbar = () => {
   const [user,setuser]=useState({})
   
   const {userdetail} = useSelector((state)=>{return state.user})
-  console.log(userdetail.user);
+  // console.log(userdetail.user);
   
   
   const getuserdata = (e)=>{
@@ -25,18 +30,20 @@ const Navbar = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-   
-
     dispatch(UserRegister(user))
     setShowPopup(false);
   };
 
   const handleSubmitlogin = (e) => {
     e.preventDefault();
-   
-
-    dispatch(LogInUser(user))
-    setShowPopup(false);
+    const username = user.username
+    const password = user.password
+    
+    dispatch(TockenJWT({ username,password })).then(() => {
+      dispatch(LogInUser());
+    });
+    
+    setShowPopuplogin(false);
   };
 
   return (
@@ -48,16 +55,6 @@ const Navbar = () => {
             <img src={logo} alt="logo" className='w-auto h-10' />
             <p>Shopy</p>
           </div>
-
-          {/* Center nav links (desktop only) */}
-          {/* <div className="hidden md:flex space-x-7">
-            <a href="#" className="text-gray-700 hover:text-blue-600">Home</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600">About</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600">Shop</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600">Services</a>
-          </div> */}
-
-          {/* Right side: Search + Login (desktop only) */}
           <div className="hidden md:flex items-center space-x-4">
             <input
               type="text"
@@ -114,9 +111,10 @@ const Navbar = () => {
                 </div>
               </div>
             )}
-            <button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition"  onClick={() => setShowPopup(true)}>
+            {userdetail.user?" ":<button className="bg-orange-400  text-white px-4 py-1.5 rounded-full hover:bg-orange-300 transition"  onClick={() => setShowPopup(true)}>
               SignUp
-            </button>
+            </button>}
+            
             {showPopup && (
               <div className=" absolute top-[70px] right-0 bg-opacity-80  z-100">
                 <div className="bg-white rounded-xl shadow-lg p-6 w-80 relative">
@@ -170,8 +168,8 @@ const Navbar = () => {
             )}
             <Link to={"/cart"} className=" bg-orange-400  text-white px-4 py-2 rounded-full hover:bg-orange-300 transition">
             cart
-          </Link>
-          <p>{userdetail.user? `welcome ${userdetail.user}`:'welcome guest'}</p>
+            </Link>
+            <p>{userdetail.user? `welcome ${userdetail.user.username}`:'welcome guest'}</p>
 
           </div>
 

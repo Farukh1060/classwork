@@ -1,10 +1,15 @@
 // src/pages/ProductDetail.jsx
 import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams, Link, useLocation } from 'react-router-dom';
+import { featchPostCart } from '../features/Cart/CartSlice';
 
 // import products from '../data/products';
 
 const ProductDetail = () => {
+ 
+  const dispatch = useDispatch()
+
   const { id } = useParams();
   const location = useLocation()
 
@@ -57,7 +62,7 @@ const ProductDetail = () => {
                     
           </div>
           {/* <p className="text-gray-600 mb-4">stock :{product.stock} pice</p> */}
-          <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition" >
+          <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition" onClick={()=>{dispatch(featchPostCart(product.id))}} >
             Add to Cart
           </button>
         </div>

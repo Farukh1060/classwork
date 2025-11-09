@@ -22,16 +22,48 @@ export const UserRegister = createAsyncThunk("UserRegister",async (data,{rejectW
 
 })
 
-export const LogInUser = createAsyncThunk("LogInUser",async (data,{rejectWithValue})=>{
+
+
+export const TockenJWT = createAsyncThunk("TockenJWT", async (credentials, { rejectWithValue }) => {
+  // console.log(credentials);
+  
+  try {
+    const response = await fetch("http://127.0.0.1:8000/api/token/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.detail || "Login failed");
+    }
+
+    const data = await response.json();
+    // Save tokens to localStorage
+    localStorage.setItem("access", data.access);
+    localStorage.setItem("refresh", data.refresh);
+    return data;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
+
+
+
+export const LogInUser = createAsyncThunk("LogInUser",async (_,{rejectWithValue})=>{
     // console.log(data);
     try{
-      const formData = new URLSearchParams();
-      formData.append("username", data.username);
-      formData.append("password", data.password);
+      
+    const token = localStorage.getItem("access");
+    // console.log(token);
     
-    const response = await axios.post("http://127.0.0.1:8000/LogInUser/",formData,{
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        })
+     const response = await axios.get("http://127.0.0.1:8000/LogInUser/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    // console.log(response.data);
+    
     return response.data
 
     }catch(error){
@@ -42,6 +74,8 @@ export const LogInUser = createAsyncThunk("LogInUser",async (data,{rejectWithVal
 export const LogOutUser= createAsyncThunk("LogOutUser",async (_,{rejectWithValue})=>{
   try{
     const response = await axios.get("http://127.0.0.1:8000/LogOutUser/")
+     localStorage.removeItem("access");
+     localStorage.removeItem("refresh");
     return response.data
 
   }catch(error){
@@ -83,7 +117,9 @@ const UserSlice = createSlice({
       .addCase(LogInUser.fulfilled, (state, action) => {
         state.loading = false;
         state.userdetail = action.payload;
-        alert(action.payload.msg)
+        // console.log(action.payload);
+        
+        // alert(action.payload.msg)
       })
       .addCase(LogInUser.rejected, (state, action) => {
         state.loading = false;
