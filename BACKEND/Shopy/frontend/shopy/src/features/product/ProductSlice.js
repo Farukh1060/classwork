@@ -2,7 +2,7 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
 export const featchproduct = createAsyncThunk("featchproduct",async (_,{rejectWithValue})=>{
 
-    const response = await fetch("http://127.0.0.1:8000/product/")
+    const response = await fetch("https://classwork-p6za.onrender.com/product/")
 
     try{
         const result = await response.json()
