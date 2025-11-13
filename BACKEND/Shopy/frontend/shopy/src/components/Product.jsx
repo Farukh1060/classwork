@@ -63,7 +63,7 @@ return (
           <div key={product.id} className="px-3">
             <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
               <img
-                src={`http://127.0.0.1:8000${product.image}`} 
+                src={`https://classwork-p6za.onrender.com${product.image}`} 
                 alt={product.name}
                 className="w-full h-48 object-cover "
               />

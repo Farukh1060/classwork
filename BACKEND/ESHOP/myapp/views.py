@@ -37,6 +37,7 @@ def logout_user(request):
 
 
 def register_user(request):
+  
 
    try:
      if request.method == "POST":
@@ -44,6 +45,9 @@ def register_user(request):
         username = request.POST.get("username")
         email = request.POST.get("email")
         password = request.POST.get("password")
+
+        checkuser = User.objects.filter(username =username)
+        print(checkuser)
         
         if username and email and password:
           user =  User.objects.create_user(username=username,email=email,password=password)
