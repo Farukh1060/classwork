@@ -28,7 +28,7 @@ export default function CartPage() {
       handler: async function (response) {
         // 2️⃣ Send payment details back to backend for verification
         await axios.post(
-          "http://localhost:8000/api/verify-payment/",
+          "https://classwork-p6za.onrender.com/api/verify-payment/",
           response,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -76,6 +76,7 @@ const increaseQuantity = (id) => {
     dispatch(featchCart())
 
     return { ...prev, [id]: newQty };
+    return { ...prev, [id]: newQty };
   });
 };
 
@@ -114,7 +115,7 @@ const decreaseQuantity = (id) => {
                 >
                   <div className="flex items-center space-x-4">
                     <img
-                      src={`http://127.0.0.1:8000${item.product.image}`}
+                      src={`https://classwork-p6za.onrender.com/${item.product.image}`}
                       alt={item.product.name}
                       className="w-20 h-20 object-cover rounded"
                     />
