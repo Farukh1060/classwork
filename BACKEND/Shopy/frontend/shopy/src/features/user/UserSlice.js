@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 import axios from "axios";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 
 export const UserRegister = createAsyncThunk("UserRegister",async (data,{rejectWithValue})=>{
@@ -10,7 +11,7 @@ export const UserRegister = createAsyncThunk("UserRegister",async (data,{rejectW
       formData.append("email", data.email);
       formData.append("password", data.password);
     
-    const response = await axios.post("http://127.0.0.1:8000/UserRegister/",formData,{
+    const response = await axios.post(`${BASE_URL}/UserRegister/`,formData,{
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
         })
     return response.data
@@ -28,7 +29,7 @@ export const TockenJWT = createAsyncThunk("TockenJWT", async (credentials, { rej
   // console.log(credentials);
   
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/token/", {
+    const response = await fetch(`${BASE_URL}/api/token/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
@@ -59,7 +60,7 @@ export const LogInUser = createAsyncThunk("LogInUser",async (_,{rejectWithValue}
     const token = localStorage.getItem("access");
     // console.log(token);
     
-     const response = await axios.get("http://127.0.0.1:8000/LogInUser/", {
+     const response = await axios.get(`${BASE_URL}/LogInUser/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
     // console.log(response.data);
@@ -73,7 +74,7 @@ export const LogInUser = createAsyncThunk("LogInUser",async (_,{rejectWithValue}
 
 export const LogOutUser= createAsyncThunk("LogOutUser",async (_,{rejectWithValue})=>{
   try{
-    const response = await axios.get("http://127.0.0.1:8000/LogOutUser/")
+    const response = await axios.get(`${BASE_URL}/LogOutUser/`)
      localStorage.removeItem("access");
      localStorage.removeItem("refresh");
     return response.data

@@ -7,6 +7,7 @@ import { featchPostCart } from '../features/Cart/CartSlice';
 // import products from '../data/products';
 
 const ProductDetail = () => {
+  const BASE_URL = import.meta.env.VITE_API_URL;
  
   const dispatch = useDispatch()
 
@@ -39,7 +40,7 @@ const ProductDetail = () => {
     <div ref={productSectionRef} className="max-w-5xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Products Details</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <img src={`https://classwork-p6za.onrender.com/${product.image}`}  alt={product.name} className="w-[500px] h-[400px] object-cover rounded" />
+        <img src={`${BASE_URL}${product.image}`}  alt={product.name} className="w-[500px] h-[400px] object-cover rounded" />
         <div className=' flex flex-col justify-center '>
           <h1 className="text-3xl font-bold mb-4">{product.catageory.name}</h1>
           <h1 className="text-3xl font-bold mb-4">{product.name}</h1>

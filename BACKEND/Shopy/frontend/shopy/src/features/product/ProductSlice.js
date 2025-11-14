@@ -1,8 +1,9 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
 export const featchproduct = createAsyncThunk("featchproduct",async (_,{rejectWithValue})=>{
+    const BASE_URL = import.meta.env.VITE_API_URL;
 
-    const response = await fetch("https://classwork-p6za.onrender.com/product/")
+    const response = await fetch(`${BASE_URL}/product/`)
 
     try{
         const result = await response.json()

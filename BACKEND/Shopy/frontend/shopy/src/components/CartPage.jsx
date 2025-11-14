@@ -5,14 +5,15 @@ import { DeleteCart, featchCart, UpdateQty} from "../features/Cart/CartSlice";
 
 
 export default function CartPage() {
-
+  
+   const BASE_URL = import.meta.env.VITE_API_URL;
   const handlePayment = async () => {
     const token = localStorage.getItem("access"); // if JWT auth used
     console.log(token);
     
     // 1️⃣ Create order from backend
     const { data } = await axios.post(
-      "http://localhost:8000/api/create-order/",
+      `${BASE_URL}/api/create-order/`,
       {},
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -28,7 +29,7 @@ export default function CartPage() {
       handler: async function (response) {
         // 2️⃣ Send payment details back to backend for verification
         await axios.post(
-          "https://classwork-p6za.onrender.com/api/verify-payment/",
+          `${BASE_URL}/api/verify-payment/`,
           response,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -115,7 +116,7 @@ const decreaseQuantity = (id) => {
                 >
                   <div className="flex items-center space-x-4">
                     <img
-                      src={`https://classwork-p6za.onrender.com/${item.product.image}`}
+                      src={`${BASE_URL}${item.product.image}`}
                       alt={item.product.name}
                       className="w-20 h-20 object-cover rounded"
                     />
