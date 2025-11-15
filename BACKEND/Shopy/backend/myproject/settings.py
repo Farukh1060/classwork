@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-((ehe%tonnq%f8l6g*y4og+t9bd%%l00fwt#y-77#h!34d*qvr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://classwork-p6za.onrender.com']   
+ALLOWED_HOSTS = ['https://classwork-p6za.onrender.com',"https://classwork-virid.vercel.app"]   
 
 
 # Application definition
