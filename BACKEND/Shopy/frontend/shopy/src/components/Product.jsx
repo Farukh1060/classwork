@@ -73,6 +73,7 @@ return (
                 <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
                 <p className=" text-gray-800 text-sm mt-1">catg :{product.catageory.name}</p>
                 <p className="text-gray-600 text-sm mt-1">{product.description}</p>
+                
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-xl font-bold text-blue-600">${product.price}</span>
                   <button className="bg-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-300 transition" onClick={()=>{dispatch(featchPostCart(product.id))}}>

@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   
   return (
     <div className="bg-white shadow rounded overflow-hidden mx-auto p-4">
-      <img src={`${BASE_URL}/${product.image}`}  alt={product.name} className=" w-[250px] h-[300px] object-cover" />
+      <img src={`${BASE_URL}${product.image}`}  alt={product.name} className=" w-[250px] h-[300px] object-cover" />
       <div className="p-4">
         <h3 className="text-lg font-semibold">{product.name}</h3>
         <h3 className="text-gray-600">catg : {product.catageory.name}</h3>
