@@ -1,8 +1,9 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const featchCart = createAsyncThunk("fetchCart",async (_,{rejectWithValue})=>{
     const token = localStorage.getItem("access");
-    const response = await fetch("https://classwork-p6za.onrender.com/cart/",{
+    const response = await fetch(`${BASE_URL}/cart/`,{
         method:"get",
         headers:{
             Authorization: `Bearer ${token}`,
@@ -24,7 +25,7 @@ export const featchPostCart = createAsyncThunk("featchPostCart",async (id,{rejec
     // console.log("id",id);
     const token = localStorage.getItem("access");
     const response =await fetch(
-        "https://classwork-p6za.onrender.com/cart/",
+       `${BASE_URL}/cart/`,
         {
             method:"post",
             headers:{
@@ -55,7 +56,7 @@ export const DeleteCart = createAsyncThunk("DeleteCart",async(id,{rejectWithValu
     // console.log("delete",id);
     const token = localStorage.getItem("access");
     
-     const response = await fetch(`https://classwork-p6za.onrender.com/cart/${id}`,{
+     const response = await fetch(`${BASE_URL}/cart/${id}`,{
         method:"delete",
         headers:{
             Authorization: `Bearer ${token}`,
@@ -77,7 +78,7 @@ export const UpdateQty = createAsyncThunk("UpdateQty",async ({pk,qty},{rejectWit
     // console.log("id",pk);
     const token = localStorage.getItem("access");
     const response =await fetch(
-        `https://classwork-p6za.onrender.com/cart/quantity/${pk}`,
+        `${BASE_URL}/cart/quantity/${pk}`,
         {
             method:"put",
             headers:{

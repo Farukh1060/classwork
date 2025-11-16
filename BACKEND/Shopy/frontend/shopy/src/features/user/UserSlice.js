@@ -68,7 +68,9 @@ export const LogInUser = createAsyncThunk("LogInUser",async (_,{rejectWithValue}
     return response.data
 
     }catch(error){
-      return rejectWithValue(error)
+      return rejectWithValue(
+        error.response?.data || { message: "Network error" }
+      );
     }
 })
 
@@ -80,7 +82,9 @@ export const LogOutUser= createAsyncThunk("LogOutUser",async (_,{rejectWithValue
     return response.data
 
   }catch(error){
-      return rejectWithValue(error.response.data)
+      return rejectWithValue(
+        error.response?.data || { message: "Network error" }
+      );
     }
 })
 

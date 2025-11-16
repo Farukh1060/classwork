@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,10 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-((ehe%tonnq%f8l6g*y4og+t9bd%%l00fwt#y-77#h!34d*qvr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['classwork-p6za.onrender.com',
-                 "classwork-virid.vercel.app"]   
+ALLOWED_HOSTS = ["*"]   
 
 
 # Application definition
@@ -103,10 +103,10 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
 CSRF_TRUSTED_ORIGINS = [
-    # "http://localhost:5173",
-    # "http://127.0.0.1:5173",
-    "https://classwork-virid.vercel.app",
-    "https://classwork-p6za.onrender.com",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    # "https://classwork-virid.vercel.app",
+    # "https://classwork-p6za.onrender.com",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True 
@@ -186,5 +186,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR/"media"
 
-RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID")
-RAZORPAY_SECRET_KEY = os.environ.get("RAZORPAY_SECRET_KEY")
+load_dotenv()
+RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID")
+RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
