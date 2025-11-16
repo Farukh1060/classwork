@@ -65,7 +65,7 @@ return (
           <div key={product.id} className="px-3">
             <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
               <img
-                src={console.log(`${BASE_URL}/${product.image}`)} 
+                src={console.log(`${BASE_URL}${product.image}`)} 
                 alt={product.name}
                 className="w-full h-48 object-cover "
               />
