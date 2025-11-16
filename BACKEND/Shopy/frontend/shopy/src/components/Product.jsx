@@ -15,6 +15,7 @@ import { featchPostCart } from '../features/Cart/CartSlice';
 
 const Product = () => {
   const BASE_URL = import.meta.env.VITE_API_URL;
+  console.log(`${BASE_URL}/${product.image}`);
   
   const dispatch = useDispatch()
   const {items,loading,error} = useSelector((state)=>{return state.product})
@@ -64,7 +65,7 @@ return (
           <div key={product.id} className="px-3">
             <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
               <img
-                src={`${BASE_URL}${product.image}`} 
+                src={`${BASE_URL}/${product.image}`} 
                 alt={product.name}
                 className="w-full h-48 object-cover "
               />
