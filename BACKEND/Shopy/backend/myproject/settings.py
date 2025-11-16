@@ -102,8 +102,10 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    # "http://localhost:5173",
+    # "http://127.0.0.1:5173",
+    "https://classwork-virid.vercel.app",
+    "https://classwork-p6za.onrender.com",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True 
