@@ -15,10 +15,10 @@ import { featchPostCart } from '../features/Cart/CartSlice';
 
 const Product = () => {
   const BASE_URL = import.meta.env.VITE_API_URL;
-  console.log(`${BASE_URL}/${product.image}`);
   
   const dispatch = useDispatch()
   const {items,loading,error} = useSelector((state)=>{return state.product})
+
 
   useEffect(()=>{
     dispatch(featchproduct())
