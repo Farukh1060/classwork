@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 from datetime import timedelta
 from pathlib import Path
-import os
+import os   #for deployment
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,11 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')           #for deployment
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = False  #for deployment make false
 
-ALLOWED_HOSTS = ["*"]   
+ALLOWED_HOSTS = ["*"]   #for deployment allowy any site
 
 
 # Application definition
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',    #for deployment alowy statice file
 
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -110,7 +110,7 @@ CSRF_TRUSTED_ORIGINS = [
     # "https://classwork-p6za.onrender.com",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOW_ALL_ORIGINS = True #for deployment
 
 ROOT_URLCONF = 'myproject.urls'
 
@@ -178,7 +178,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles'   #for deployment
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -190,3 +190,7 @@ MEDIA_ROOT = BASE_DIR/"media"
 load_dotenv()
 RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID")
 RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
+
+
+#for deployment make .env and add secreate all
+#after  deployment    https://classwork-cbsw.onrender.com
