@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   const BASE_URL = import.meta.env.VITE_API_URL;
-  // console.log(`${BASE_URL}${product.image}`);
+  console.log(`${BASE_URL}`);
   
   return (
     <div className="bg-white shadow rounded overflow-hidden mx-auto p-4">
